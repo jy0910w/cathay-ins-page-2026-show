@@ -1,0 +1,782 @@
+@charset "UTF-8";
+/* 
+  Project: 2026 Cathay Insurance Campaign - Dance Enough Gift
+  Author: Copilot CLI
+  Date: 2026-01-21
+*/
+
+/* Global Reset */
+html, body {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: auto !important;
+}
+
+/* Hide footer during campaign - kept for sec3/4/5 but showing footer_hide elements */
+body #sec3, body #sec4, body #sec5 {
+  display: none;
+}
+
+body.show #sec3, body.show #sec4, body.show #sec5 {
+  display: block;
+}
+
+/* Main Campaign Container */
+#event_2026_dance {
+  width: 100%;
+  position: relative;
+  font-family: "Noto Sans TC", "Montserrat", sans-serif;
+  overflow: hidden;
+  background: white;
+}
+
+/* ========== Hero Section ========== */
+#event_2026_dance #hero {
+  width: 100%;
+  background: white; /* 保持底色為白 */
+  position: relative;
+  padding: 6rem 1rem 2rem;
+  text-align: center;
+  overflow: visible;
+}
+
+/* Background Image via Pseudo-element for independent positioning */
+#event_2026_dance #hero::before {
+  content: '';
+  position: absolute;
+  top: 0px; /* 手機版 Header 高度避讓 */
+  left: 0;
+  width: 100%;
+  height: calc(100%);
+  background: url('../images/section1.svg') no-repeat center top;
+  background-size: cover;
+  z-index: 0;
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #hero {
+    padding: 8rem 2rem 3rem;
+  }
+  
+  #event_2026_dance #hero::before {
+    top: 0px; /* 桌機版 Header 高度避讓 */
+    height: calc(100%);
+  }
+}
+
+/* 確保內容在人物之上 */
+#event_2026_dance #hero .hero_content {
+  position: relative;
+  z-index: 10;
+}
+
+/* 左側人物 - 手機男 */
+#event_2026_dance #hero .char_left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30%; /* 手機版大小 */
+  max-width: 300px;
+  height: auto;
+  z-index: 5;
+  transform: translateX(-10%); /* 稍微往左移 */
+}
+
+/* 右側人物 - 音樂女 */
+#event_2026_dance #hero .char_right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%; /* 手機版大小 */
+  max-width: 300px;
+  height: auto;
+  z-index: 5;
+  transform: translateX(10%); /* 稍微往右移 */
+}
+
+@media (min-width: 768px) {
+  #event_2026_dance #hero .char_left,
+  #event_2026_dance #hero .char_right {
+    width: 25%;
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #hero .char_left {
+    left: 5%;
+    width: 23%;
+    max-width: 500px;
+    transform: none;
+  }
+  
+  #event_2026_dance #hero .char_right {
+    right: 5%;
+    width: 23%;
+    max-width: 500px;
+    transform: none;
+  }
+}
+
+#event_2026_dance #hero .hero_title {
+  margin-bottom: 2rem;
+}
+
+#event_2026_dance #hero .hero_title .line1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #hero .hero_title .line1 {
+    font-size: 2.5rem;
+  }
+}
+
+#event_2026_dance #hero .hero_title .line1 .yellow {
+  color: #FFC83B;
+}
+
+#event_2026_dance #hero .hero_title .line1 .black {
+  color: #3F3F3F;
+}
+
+#event_2026_dance #hero .hero_title .line2 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #hero .hero_title .line2 {
+    font-size: 3.5rem;
+  }
+}
+
+#event_2026_dance #hero .hero_title .line2 .yellow {
+  color: #FFC83B;
+}
+
+#event_2026_dance #hero .hero_title .line2 .black {
+  color: #3F3F3F;
+}
+
+#event_2026_dance #hero .hero_subtitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #3F3F3F;
+  margin-top: 5rem;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#event_2026_dance #hero .hero_subtitle .big_num {
+  font-size: 1.5em;
+  line-height: 1;
+  margin: 0 0.25rem;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #hero .hero_subtitle {
+    font-size: 2.5rem;
+    margin-top: 7rem;
+  }
+}
+
+#event_2026_dance #hero .hero_cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#event_2026_dance #hero .hero_cta .btn {
+  flex: 1;
+  min-width: 100px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-right: 2.5rem;
+  background: #FFC83B;
+  color: #3F3F3F;
+  text-align: center;
+}
+
+#event_2026_dance #hero .hero_cta .btn::after {
+  content: '';
+  position: absolute;
+  right: 1.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 16px;
+  background: url('../images/icon-arrow--line.svg') no-repeat center center;
+  background-size: contain;
+}
+
+#event_2026_dance #hero .hero_cta .btn:hover {
+  background: #d9a83a;
+}
+
+/* 手機版調整 */
+@media (max-width: 767px) {
+  #event_2026_dance #hero .hero_cta {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  #event_2026_dance #hero .hero_cta .btn {
+    flex: 1 1 100%;
+    max-width: 150px;
+  }
+}
+
+/* Removed hero_image styles */
+
+/* ========== Steps Section ========== */
+#event_2026_dance #steps {
+  width: 100%;
+  background: #ccffe1;
+  padding: 6rem 1rem 4rem;
+  position: relative;
+}
+
+/* White background for the bottom part (Desktop) */
+#event_2026_dance #steps::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px; /* Covers padding-bottom + button area */
+  background: white;
+  z-index: 0;
+  display: none; /* Hidden on mobile */
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #steps::after {
+    display: block;
+  }
+}
+
+/* 向上凸起的綠色波浪裝飾 - 梯形 */
+#event_2026_dance #steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #ccffe1;
+  clip-path: polygon(
+    0 100%,
+    42% 100%,
+    50% 0,
+    58% 100%,
+    100% 100%
+  );
+  transform: translateY(-100%);
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  #event_2026_dance #steps::before {
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #event_2026_dance #steps::before {
+    height: 50px;
+  }
+}
+
+#event_2026_dance #steps .steps_title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #3F3F3F;
+}
+
+#event_2026_dance #steps .steps_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1; /* Ensure grid sits above the backgrounds */
+}
+
+@media (min-width: 768px) {
+  #event_2026_dance #steps .steps_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Step Card */
+#event_2026_dance #steps .step_card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  align-items: center;
+}
+
+/* White Card Content */
+#event_2026_dance #steps .step_main {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0; /* Removed padding as button is separate now */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  flex: 1; /* Make cards stretch to fill height */
+}
+
+#event_2026_dance #steps .step_badge {
+  background: #FFC83B;
+  color: #3F3F3F;
+  font-weight: 800;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 1.25rem;
+  width: 100%;
+}
+
+#event_2026_dance #steps .step_title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 1.5rem 1rem 1rem;
+  line-height: 1.4;
+  color: #3F3F3F;
+  text-align: center;
+}
+
+#event_2026_dance #steps .step_image {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
+  height: 180px; /* Fixed height container */
+  align-items: center;
+}
+
+#event_2026_dance #steps .step_image img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%; /* Contain image */
+}
+
+/* Specific adjustment for Step 3 image */
+#event_2026_dance #steps .step3_main .step_image img {
+  max-height: 85%;
+  max-width: 85%;
+}
+
+/* Floating Button */
+#event_2026_dance #steps .step_btn {
+  display: flex;
+  background: #FFC83B;
+  color: #3F3F3F;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#event_2026_dance #steps .step_btn .arrow {
+  display: inline-block;
+  width: 6px;
+  height: 10px;
+  background: url('../images/icon-arrow--line.svg') no-repeat center center;
+  background-size: contain;
+}
+
+#event_2026_dance #steps .step_note {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Desktop Grid Configuration */
+@media (min-width: 1024px) {
+  #event_2026_dance #steps .steps_grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto; /* Row 1: Cards, Row 2: Footer */
+    gap: 0; /* We use margins inside or explicit spacing */
+    column-gap: 4rem;
+  }
+
+  /* Grid Placement */
+  #event_2026_dance #steps .step1_main { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  #event_2026_dance #steps .step2_main { grid-column: 2; grid-row: 1; margin-bottom: 0; }
+  #event_2026_dance #steps .step3_main { grid-column: 3; grid-row: 1; margin-bottom: 0; }
+
+  #event_2026_dance #steps .step1_footer { grid-column: 1; grid-row: 2; margin-bottom: 0; padding-top: 1rem; }
+  #event_2026_dance #steps .step2_footer { grid-column: 2; grid-row: 2; margin-bottom: 0; padding-top: 1rem; }
+  #event_2026_dance #steps .step3_footer { grid-column: 3; grid-row: 2; margin-bottom: 0; padding-top: 1rem; }
+
+  /* Background Layer for Row 2 (White) */
+  #event_2026_dance #steps .steps_bg_layer {
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Pseudo element to create full width white background */
+  #event_2026_dance #steps .steps_bg_layer::before {
+    content: '';
+    position: absolute;
+    top: 0; /* Start exactly where Row 2 starts (buttons) */
+    bottom: -100vh; /* Extend down significantly to cover section padding */
+    left: -100vw;
+    right: -100vw;
+    background: white;
+  }
+
+  /* Arrows */
+  #event_2026_dance #steps .step1_main::after,
+  #event_2026_dance #steps .step2_main::after {
+    content: '>';
+    position: absolute;
+    right: -2.5rem;
+    top: 50%;
+    transform: translateY(-50%) scaleY(1.5);
+    font-size: 3rem;
+    color: #047857;
+    font-weight: 300;
+    pointer-events: none;
+  }
+  
+  /* Remove old arrow styles if any */
+  #event_2026_dance #steps .step_card:not(:last-child)::after {
+    display: none;
+  }
+}
+
+/* Incentive Banner */
+#event_2026_dance #steps .incentive_banner {
+  margin-top: 3rem;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  #event_2026_dance #steps .incentive_banner {
+    flex-direction: row;
+  }
+}
+
+#event_2026_dance #steps .incentive_banner .icon {
+  width: 4rem;
+  height: 4rem;
+  background: #d1d5db;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#event_2026_dance #steps .incentive_banner h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #047857;
+  margin: 0;
+}
+
+#event_2026_dance #steps .incentive_banner p {
+  color: #059669;
+  margin: 0.25rem 0 0;
+}
+
+/* ========== Video Section ========== */
+#event_2026_dance #video {
+  width: 100%;
+  background: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+#event_2026_dance #video .video_title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #3F3F3F;
+}
+
+#event_2026_dance #video .video_container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+#event_2026_dance #video .video_container iframe,
+#event_2026_dance #video .video_container > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#event_2026_dance #video .video_placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* ========== Prizes Section ========== */
+#event_2026_dance #prizes {
+  width: 100%;
+  background: #FFF8E1;
+  padding: 4rem 1rem;
+}
+
+#event_2026_dance #prizes .prizes_title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #3F3F3F;
+}
+
+#event_2026_dance #prizes .prizes_subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+#event_2026_dance #prizes .prizes_subtitle .green {
+  color: #059669;
+}
+
+#event_2026_dance #prizes .prizes_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  #event_2026_dance #prizes .prizes_grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+}
+
+#event_2026_dance #prizes .prize_card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+#event_2026_dance #prizes .prize_card:hover {
+  transform: scale(1.02);
+}
+
+#event_2026_dance #prizes .prize_card.first {
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  #event_2026_dance #prizes .prize_card.first {
+    transform: scale(1.1);
+  }
+}
+
+#event_2026_dance #prizes .prize_card .prize_badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #FFC83B;
+  color: white;
+  font-weight: 700;
+  padding: 0.25rem 0;
+  border-radius: 1rem 1rem 0 0;
+  margin: -1.5rem -1.5rem 1rem;
+}
+
+#event_2026_dance #prizes .prize_card.first .prize_badge {
+  background: #FFC83B;
+  padding: 0.5rem 0;
+  margin: -2rem -2rem 1.5rem;
+}
+
+#event_2026_dance #prizes .prize_card .prize_title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #3F3F3F;
+}
+
+#event_2026_dance #prizes .prize_card.first .prize_title {
+  font-size: 1.25rem;
+}
+
+#event_2026_dance #prizes .prize_card .prize_image {
+  background: #f3f4f6;
+  height: 8rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+}
+
+#event_2026_dance #prizes .prize_card.first .prize_image {
+  height: 10rem;
+}
+
+#event_2026_dance #prizes .prizes_cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#event_2026_dance #prizes .prizes_cta .btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-right: 2.5rem;
+  background: #FFC83B;
+  color: white;
+}
+
+#event_2026_dance #prizes .prizes_cta .btn::after {
+  content: '>';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#event_2026_dance #prizes .prizes_cta .btn:hover {
+  background: #d9a83a;
+}
+
+/* ========== Rules Section ========== */
+#event_2026_dance #rules {
+  width: 100%;
+  background: #f9fafb;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+#event_2026_dance #rules .rules_container {
+  width: 100%;
+  max-width: 56rem;
+  padding: 0 1rem;
+}
+
+#event_2026_dance #rules .rules_title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #374151;
+  margin-bottom: 2rem;
+}
+
+#event_2026_dance #rules .rules_content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.75;
+}
+
+#event_2026_dance #rules .rules_content ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+#event_2026_dance #rules .rules_content ul li {
+  margin-bottom: 0.5rem;
+}
+
+#event_2026_dance #rules .rules_content ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+#event_2026_dance #rules .rules_content ol li {
+  margin-bottom: 0.5rem;
+}
+
+#event_2026_dance #rules .rules_content strong {
+  font-weight: 700;
+  color: #1f2937;
+}

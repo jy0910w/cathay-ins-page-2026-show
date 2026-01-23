@@ -1,0 +1,65 @@
+<svg
+  width="100%"
+  height="100%"
+  viewBox="0 0 20 20"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <mask
+    id="mask0_3755_9976"
+    style="mask-type: alpha"
+    maskUnits="userSpaceOnUse"
+    x="0"
+    y="0"
+    width="20"
+    height="20"
+  >
+    <rect width="20" height="20" fill="#A4ADB0" />
+  </mask>
+  <g mask="url(#mask0_3755_9976)">
+    <path
+      d="M2.5 10.8334C2.5 9.91288 3.24619 9.16669 4.16667 9.16669H15.8333C16.7538 9.16669 17.5 9.91288 17.5 10.8334V15H2.5V10.8334Z"
+      stroke="#A4ADB0 "
+      stroke-width="1.66667"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4.65167 6.25569C4.85258 5.05022 5.89556 4.16669 7.11766 4.16669H12.882C14.1041 4.16669 15.1471 5.05022 15.348 6.25569L15.8332 9.16669H4.1665L4.65167 6.25569Z"
+      stroke="#A4ADB0"
+      stroke-width="1.66667"
+      stroke-linejoin="round"
+    />
+    <rect
+      x="14.1665"
+      y="14.1667"
+      width="2.08333"
+      height="3.33333"
+      rx="1.04167"
+      fill="#A4ADB0"
+    />
+    <rect
+      x="4.1665"
+      y="14.1667"
+      width="2.08333"
+      height="3.33333"
+      rx="1.04167"
+      fill="#A4ADB0"
+    />
+    <rect
+      x="5"
+      y="10.8333"
+      width="3.33333"
+      height="1.33333"
+      rx="0.666667"
+      fill="#A4ADB0"
+    />
+    <rect
+      x="11.6665"
+      y="10.8333"
+      width="3.33333"
+      height="1.33333"
+      rx="0.666667"
+      fill="#A4ADB0"
+    />
+  </g>
+</svg>

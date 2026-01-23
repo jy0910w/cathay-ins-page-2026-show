@@ -1,0 +1,10 @@
+@font-face {
+      font-family: "icomoon";
+      src: url("/CathayCINS/Web/fonts/icomoon.eot?d1uw6x");
+      src: url("/CathayCINS/Web/fonts/icomoon.eot?d1uw6x#iefix") format("embedded-opentype"),
+        url("/CathayCINS/Web/fonts/icomoon.ttf?d1uw6x") format("truetype"),
+        url("/CathayCINS/Web/fonts/icomoon.woff?d1uw6x") format("woff"),
+        url("/CathayCINS/Web/fonts/icomoon.svg?d1uw6x#icomoon") format("svg");
+      font-weight: normal;
+      font-style: normal;
+    }
