@@ -124,8 +124,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     videoInput.addEventListener('change', function() {
       if (this.files && this.files.length > 0) {
-        console.log('Video file selected');
-        // Future logic for handling the video file can go here
+        // Web limitations: Input capture doesn't automatically save to gallery on all devices (esp. iOS).
+        // Solution: Create a download link to prompt the user to save the file manually.
+        var file = this.files[0];
+        var url = URL.createObjectURL(file);
+        
+        // Create invisible download link
+        var a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        // Generate a timestamped filename
+        var timestamp = new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15);
+        a.download = 'cathay-dance-' + timestamp + '.mp4';
+        
+        document.body.appendChild(a);
+        a.click();
+        
+        // Clean up
+        setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+          // Optional: Clear the input so same file can be selected again if needed, 
+          // though usually for recording this isn't strictly necessary immediately.
+          videoInput.value = ''; 
+          
+          alert('錄影完成！請確認下載/儲存影片至您的手機，以便稍後上傳。');
+        }, 100);
       }
     });
   }
