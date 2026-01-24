@@ -144,11 +144,19 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
           document.body.removeChild(a);
           window.URL.revokeObjectURL(url);
-          // Optional: Clear the input so same file can be selected again if needed, 
-          // though usually for recording this isn't strictly necessary immediately.
+          // Optional: Clear the input so same file can be selected again if needed
           videoInput.value = ''; 
           
-          alert('錄影完成！請確認下載/儲存影片至您的手機，以便稍後上傳。');
+          // Customized alert based on likely OS behavior
+          // Android often downloads silently to 'Downloads' folder.
+          // iOS requires manual confirmation and saves to 'Files' app (not Photos).
+          var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          
+          if (isIOS) {
+             alert('請點擊「下載」將影片儲存到手機檔案，稍後請至「檔案」App 找尋影片上傳。');
+          } else {
+             alert('影片已下載！請至相簿或下載資料夾確認，以便稍後上傳。');
+          }
         }, 100);
       }
     });
