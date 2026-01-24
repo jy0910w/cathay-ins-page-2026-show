@@ -28,7 +28,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   width: 100%;
   position: relative;
   font-family: "Noto Sans TC", "Montserrat", sans-serif;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible for sticky elements */
   background: white;
 }
 
@@ -217,6 +217,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: #FFC83B;
   color: #3F3F3F;
   text-align: center;
+  margin-left: 0 !important;
 }
 
 #event_2026_dance #hero .hero_cta .btn::after {
@@ -254,7 +255,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #steps {
   width: 100%;
   background: #ccffe1;
-  padding: 2rem 1rem 2rem;
+  padding: 2rem 2rem 2rem;
   position: relative;
 }
 
@@ -274,9 +275,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: #ccffe1;
   clip-path: polygon(
     0 100%,
-    42% 100%,
+    45% 100%,
     50% 0,
-    58% 100%,
+    55% 100%,
     100% 100%
   );
   transform: translateY(-100%);
@@ -309,7 +310,6 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   gap: 0;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 0 1rem;
   position: relative;
   z-index: 1;
 }
@@ -320,22 +320,34 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
 }
 
-/* Step Main (White Card) */
+/* Step Main (Yellow Wrapper) */
 #event_2026_dance #steps .step_main {
-  background: white;
-  border-radius: 1rem;
-  overflow: hidden;
-  width: auto; /* Changed from 100% to auto to allow margins */
-  margin-left: 1.6rem; /* Make card narrower than the grid column */
-  margin-right: 1.6rem;
+  background: #FFC83B;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 0 1px 1px 1px; /* Thin yellow border effect sides/bottom */
   position: relative;
   z-index: 2;
   height: 100%;
   margin-bottom: 1rem;
+  overflow: visible;
+}
+
+/* New Inner White Card */
+#event_2026_dance #steps .step_card_body {
+  background: white;
+  border-radius: 1rem; /* Rounded all corners inside */
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none; /* Shadow on parent */
+  width: 100%;
 }
 
 #event_2026_dance #steps .step_footer {
@@ -352,18 +364,18 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #steps .step_badge {
-  background: #FFC83B;
+  background: transparent;
   color: #3F3F3F;
   font-weight: 700;
-  padding: 0.75rem;
+  padding: 1rem 0 1rem;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   width: 100%;
 }
 
 #event_2026_dance #steps .step_title {
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 450;
   margin: 1rem 1rem 1rem;
   line-height: 1.4;
   color: #3F3F3F;
@@ -374,7 +386,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   margin: 0 1rem;
   display: flex;
   justify-content: center;
-  height: 180px; /* Fixed height container */
+  height: 15.75rem; /* Adjusted to 200px */
   align-items: center;
 }
 
@@ -397,19 +409,24 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: #FFC83B;
   color: #3F3F3F;
   text-align: center;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 2rem;
   font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
-  width: 100%;
+  width: 120%;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 #event_2026_dance #steps .step_btn .arrow {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: inline-block;
   width: 6px;
   height: 10px;
@@ -418,7 +435,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #steps .step_note {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #6b7280;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -429,53 +446,87 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 /* Desktop Grid Configuration */
 @media (min-width: 1024px) {
   #event_2026_dance #steps .steps_grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto; /* Row 1: Cards, Row 2: Footer */
-    gap: 0; /* We use margins inside or explicit spacing */
-    column-gap: 4rem;
+    /* 5-column grid: 1fr (spacer) - card - card - card - 1fr (spacer) */
+    grid-template-columns: 1fr minmax(0, 27.5rem) minmax(0, 27.5rem) minmax(0, 27.5rem) 1fr;
+    grid-template-rows: auto auto auto; /* Row 1: Cards, Row 2: Footer, Row 3: Banner */
+    gap: 0; 
+    column-gap: 6rem; /* Adjusted gap */
+    max-width: none;
   }
 
-  /* Grid Placement */
-  #event_2026_dance #steps .step1_main { grid-column: 1; grid-row: 1; margin-bottom: 0; }
-  #event_2026_dance #steps .step2_main { grid-column: 2; grid-row: 1; margin-bottom: 0; }
-  #event_2026_dance #steps .step3_main { grid-column: 3; grid-row: 1; margin-bottom: 0; }
+  /* Constrain cards and footers on desktop */
+  #event_2026_dance #steps .step_main {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+  }
 
-  #event_2026_dance #steps .step1_footer { grid-column: 1; grid-row: 2; margin-bottom: 0; padding-top: 3rem; }
-  #event_2026_dance #steps .step2_footer { grid-column: 2; grid-row: 2; margin-bottom: 0; padding-top: 3rem; }
-  #event_2026_dance #steps .step3_footer { grid-column: 3; grid-row: 2; margin-bottom: 0; padding-top: 3rem; }
+  #event_2026_dance #steps .step_footer {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Grid Placement - Shifted by +1 column due to spacer */
+  #event_2026_dance #steps .step1_main { grid-column: 2; grid-row: 1; margin-bottom: 0; }
+  #event_2026_dance #steps .step2_main { grid-column: 3; grid-row: 1; margin-bottom: 0; }
+  #event_2026_dance #steps .step3_main { grid-column: 4; grid-row: 1; margin-bottom: 0; }
+
+  #event_2026_dance #steps .step1_footer { grid-column: 2; grid-row: 2; margin-bottom: 0; padding-top: 3rem; }
+  #event_2026_dance #steps .step2_footer { grid-column: 3; grid-row: 2; margin-bottom: 0; padding-top: 3rem; }
+  #event_2026_dance #steps .step3_footer { grid-column: 4; grid-row: 2; margin-bottom: 0; padding-top: 3rem; }
   
-  /* Background Layer for Row 2 (White) */
+  /* Incentive Banner Placement */
+  #event_2026_dance #steps .incentive_banner {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 3rem;
+  }
+
+  /* Background Layer for Row 2 & 3 (White) */
   #event_2026_dance #steps .steps_bg_layer {
     display: block;
     grid-column: 1 / -1;
-    grid-row: 2;
-    position: relative;
+    grid-row: 2 / -1; /* Spans Row 2 (Footer) and Row 3 (Banner) */
+    position: absolute; /* Take out of flow to prevent layout issues */
     z-index: 0;
+    
+    /* Full width expansion */
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Vertical positioning relative to the grid rows */
+    top: 2rem; /* Start white bg slightly lower */
+    bottom: -4rem; /* Extend to cover section padding */
+    height: auto;
+    
+    background: white;
   }
 
-  /* Pseudo element to create full width white background */
+  /* Remove pseudo element */
   #event_2026_dance #steps .steps_bg_layer::before {
-    content: '';
-    position: absolute;
-    top: 2rem; /* Start exactly where Row 2 starts (buttons) */
-    bottom: -50vh; /* Extend down significantly to cover section padding and incentive banner */
-    left: -50vw;
-    right: -50vw;
-    background: white;
+    display: none;
   }
 
   /* Arrows */
   #event_2026_dance #steps .step1_main::after,
   #event_2026_dance #steps .step2_main::after {
-    content: '>';
+    content: '';
     position: absolute;
-    right: -2.5rem;
+    /* Position exactly in the middle of the 2rem gap */
+    left: calc(100% + 3rem); 
     top: 50%;
-    transform: translateY(-50%) scaleY(1.5);
-    font-size: 3rem;
-    color: #047857;
-    font-weight: 300;
+    transform: translate(-50%, -50%);
+    width: 2rem;
+    height: 2rem;
+    background: url('../images/icon-arrow--line.svg') no-repeat center center;
+    background-size: contain;
     pointer-events: none;
+    z-index: 10;
   }
   
   /* Remove old arrow styles if any */
@@ -497,8 +548,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   justify-content: center;
   gap: 0.5rem;
   text-align: center;
-  width: 95%;
-  max-width: 1200px;
+  width: 73%;
+  max-width: 1410px;
   /* Ensure height for background */
   min-height: 180px; 
   margin-left: auto;
@@ -509,18 +560,35 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 @media (min-width: 768px) {
   #event_2026_dance #steps .incentive_banner {
-    width: 80%; /* Leave 10% on each side */
-    aspect-ratio: 2332/575; /* Lock aspect ratio to match image */
+    width: 73%; /* Occupy nearly full width */
+    max-width: none; /* Override mobile max-width: 1200px */
+    aspect-ratio: 14/5; /* Lock aspect ratio to match image */
     background-size: contain; /* Ensure full image is visible */
     background-repeat: no-repeat;
     background-position: center;
     min-height: auto; /* Remove fixed height constraint */
-    flex-direction: column;
-    align-items: flex-end; /* Align text block to right */
-    padding-left: 0;
-    padding-right: 10%; /* Space from right edge */
-    justify-content: center;
+    padding: 0;
+    
+    /* Container Query Setup */
+    container-type: inline-size;
+    position: relative;
+    display: block;
+  }
+  
+  /* Text Container - Absolute Positioning */
+  #event_2026_dance #steps .incentive_banner > div:last-child {
+    position: absolute;
+    top: 66%; /* Increased from 63% to move down */
+    right: 10%; /* Increased from 12% to move left */
+    transform: translateY(-50%);
     text-align: left;
+    width: auto;
+  }
+  
+  #event_2026_dance #steps .incentive_banner h3 {
+    font-size: 3cqw !important; /* Scale relative to container width */
+    line-height: 1.4;
+    white-space: nowrap;
   }
 }
 
@@ -529,45 +597,121 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #steps .incentive_banner h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 3cqw;
+  font-weight: 500;
   color: #3F3F3F; /* Dark text */
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* ========== Video Section ========== */
 #event_2026_dance #video {
   width: 100%;
-  background: white;
-  padding: 2rem 1rem;
+  background: white url('../images/section2.svg') no-repeat center top;
+  background-size: 100% auto;
+  padding: 2rem 1rem 3rem;
   text-align: center;
 }
 
 #event_2026_dance #video .video_title {
-  font-size: 1.875rem;
+  font-size: 3.33333vw; /* 64px at 1920px */
   font-weight: 700;
   margin-bottom: 2rem;
   color: #3F3F3F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.83333vw; /* 16px at 1920px */
+}
+
+#event_2026_dance #video .video_title::before {
+  content: '';
+  display: block;
+  width: 2.5vw; /* 48px at 1920px */
+  height: 4.16667vw; /* 80px at 1920px */
+  background: url('../images/blacklightingL.svg') no-repeat center center;
+  background-size: contain;
+}
+
+#event_2026_dance #video .video_title::after {
+  content: '';
+  display: block;
+  width: 2.5vw; /* 48px at 1920px */
+  height: 4.16667vw; /* 80px at 1920px */
+  background: url('../images/blacklightingR.svg') no-repeat center center;
+  background-size: contain;
+}
+
+#event_2026_dance #video .video_title span {
+  color: #FFC83B;
 }
 
 #event_2026_dance #video .video_container {
   position: relative;
-  padding-bottom: 56.25%;
+  width: 75vw;
+  padding-bottom: 42.1875vw; /* 75vw * 9 / 16 = 42.1875vw */
   height: 0;
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  max-width: 64rem;
+  max-width: none;
   margin: 0 auto;
 }
 
 #event_2026_dance #video .video_container iframe,
+#event_2026_dance #video .video_container video,
 #event_2026_dance #video .video_container > div {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Video Cover & Play Button */
+.video-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  z-index: 2;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-cover.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.play-btn {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.play-btn::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 20px;
+  border-color: transparent transparent transparent #000;
+  margin-left: 5px; /* Visual center adjustment */
 }
 
 #event_2026_dance #video .video_placeholder {
@@ -702,7 +846,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prizes_cta .btn {
-  padding: 0.75rem 2rem;
+  padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 700;
   border-radius: 9999px;
@@ -854,5 +998,87 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     top: -50px;
     right: -50px;
     font-size: 3rem;
+  }
+}
+
+/* ========== Floating Camera Button ========== */
+/* Removed old container styles */
+.floating_camera_btn_container {
+  display: none; 
+}
+
+/* Global Floating Container */
+.global_floating_camera_container {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  /* Use fixed positioning to float over everything, but control visibility with JS */
+  /* Or use sticky if we can find a parent that spans video to footer */
+  
+  /* Current strategy: Fixed position, controlled by ScrollTrigger/JS logic or simplified CSS sticky if structure allows */
+  /* Given the request: "Appears when section video appears" -> meaning it shows up LATER? */
+  /* Re-reading user request: "滑動到出現section vedio時 這個按鈕才出現" -> appear when video section is reached */
+  /* AND "跟著滑動到頁尾" -> stay visible until footer */
+  
+  /* Best approach: Fixed position button, initially hidden, show via JS when scroll passes threshold */
+  
+  .global_floating_camera_container {
+    display: block;
+    position: fixed; /* Fixed to viewport */
+    top: 20vh;
+    right: 10px;
+    z-index: 999;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Click-through when hidden */
+  }
+  
+  .global_floating_camera_container.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .floating_camera_btn {
+    /* No longer sticky, now just a static block inside the fixed container */
+    position: relative; 
+    top: auto;
+    background: url('../images/open-camera.svg') no-repeat center center;
+    background-size: contain;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    width: 140px; /* Adjust size based on aspect ratio of your SVG */
+    height: 140px; 
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+  }
+  
+  .floating_camera_btn:active {
+    transform: scale(0.95);
+  }
+  
+  .floating_camera_btn img {
+    display: none; /* Hide img tag since we use background */
+  }
+
+  .floating_camera_btn .btn_text {
+    /* Position text based on your SVG design - adjust top/left % as needed */
+    position: absolute;
+    top: 35%; /* Example: pushed down slightly if icon is centered */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: white; /* Assuming SVG background is dark/solid enough */
+    text-align: center;
+    white-space: nowrap;
+    width: 80%; /* Ensure text doesn't spill out */
   }
 }

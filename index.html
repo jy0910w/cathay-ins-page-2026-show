@@ -690,7 +690,7 @@
         <div id="layout_0_content_0_Section_Component">
           <!-- 前端開發時新增之CSS請放在此行下方 -->
           <link rel="stylesheet" href="css/swiper-bundle.min.css" />
-          <link rel="stylesheet" href="css/campaign-2026.css?v=20260122_3" />
+          <link rel="stylesheet" href="css/campaign-2026.css?v=20260123_17" />
           
           <div id="event_2026_dance">
             
@@ -728,59 +728,87 @@
                 <!-- Step 1 -->
                 <div class="step_main step1_main">
                   <div class="step_badge">步驟 1</div>
-                  <h3 class="step_title">先學習官方舞蹈<br>並錄下你的舞蹈影片</h3>
-                  <div class="step_image">
-                    <img src="images/step1.svg" alt="步驟1插圖" />
+                  <div class="step_card_body">
+                    <h3 class="step_title">先學習官方舞蹈<br>並錄下你的舞蹈影片</h3>
+                    <div class="step_image">
+                      <img src="images/step1.svg" alt="步驟1插圖" />
+                    </div>
                   </div>
                 </div>
                 <div class="step_footer step1_footer">
                   <a href="javascript:void(0)" class="step_btn js-video-modal-btn">簡單點舞蹈教學 <span class="arrow"></span></a>
-                  <p class="step_note">※觀看教學後<br>請開啟您的手機相機錄下舞蹈影片</p>
+                  <p class="step_note">※觀看學習後<br>請開啟您的手機相機錄下舞蹈影片</p>
                 </div>
                 
                 <!-- Step 2 -->
                 <div class="step_main step2_main">
                   <div class="step_badge">步驟 2</div>
-                  <h3 class="step_title">註冊/登入會員<br>複製專屬活動碼</h3>
-                  <div class="step_image">
-                    <img src="images/step2.svg" alt="步驟2插圖" />
+                  <div class="step_card_body">
+                    <h3 class="step_title">註冊/登入會員<br>複製專屬活動碼</h3>
+                    <div class="step_image">
+                      <img src="images/step2.svg" alt="步驟2插圖" />
+                    </div>
                   </div>
                 </div>
                 <div class="step_footer step2_footer">
-                  <a href="https://www.cathay-ins.com.tw/INSOCWeb/servlet/HttpDispatcher/OCH1_0000/promptForCommon?loginForwardTrx=OCH1_2000/prompt" target="_blank" class="step_btn">註冊/登入會員 <span class="arrow"></span></a>
+                  <a href="https://www.cathay-ins.com.tw/INSOCWeb/servlet/HttpDispatcher/OCH1_0000/promptForCommon?loginForwardTrx=OCH1_1000%2Fprompt&regFrom=cathayins" target="_blank" class="step_btn">註冊/登入會員 <span class="arrow"></span></a>
                   <p class="step_note">※凡國泰產險新、舊會員<br>請登入會員中心並複製專屬活動碼</p>
                 </div>
                 
                 <!-- Step 3 -->
                 <div class="step_main step3_main">
                   <div class="step_badge">步驟 3</div>
-                  <h3 class="step_title">將影片及活動碼<br>上傳至貼文留言分享</h3>
-                  <div class="step_image">
-                    <img src="images/step3.svg" alt="步驟3插圖" />
+                  <div class="step_card_body">
+                    <h3 class="step_title">將影片及活動碼<br>上傳至貼文留言分享</h3>
+                    <div class="step_image">
+                      <img src="images/step3.svg" alt="步驟3插圖" />
+                    </div>
                   </div>
                 </div>
                 <div class="step_footer step3_footer">
                   <a href="#" class="step_btn">分享影片抽好禮 <span class="arrow"></span></a>
                   <p class="step_note">&nbsp;<br>&nbsp;</p>
                 </div>
-              </div>
-              
-              <!-- Incentive Banner -->
-              <div class="incentive_banner">
-                <div class="icon"></div>
-                <div>
-                  <h3>新會員加碼！本次活動期間加入國泰產險</h3>
-                  <h3>新會員註冊資料填入活動碼「easy_tap」</h3>
-                  <h3>就有機會獲得 100 點 LINE POINTS！</h3>
+
+                <!-- Incentive Banner -->
+                <div class="incentive_banner">
+                  <div class="icon"></div>
+                  <div>
+                    <h3>&nbsp;新會員加碼！本次活動期間加入國泰產險</h3>
+                    <h3>新會員註冊資料填入活動碼「easy_tap」</h3>
+                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;就有機會獲得100點LINE POINTS！</h3>
+                  </div>
                 </div>
+
+                <!-- Floating Camera Button - Moved to end of steps_grid to be sibling but still needs global positioning or different parent strategy -->
+                <!-- Current structure: #steps > .steps_grid > .floating_camera_btn_container -->
+                <!-- Problem: sticky is constrained by .floating_camera_btn_container height which is 100% of .steps_grid -->
+                <!-- To scroll past video to footer, the container needs to be outside #steps or cover multiple sections -->
+                
+                <!-- Moving floating button out of #steps to #event_2026_dance main container -->
               </div>
             </section>
             
+            <!-- Floating Camera Button Wrapper that spans from after steps to end -->
+            <div class="global_floating_camera_container">
+               <button type="button" class="floating_camera_btn" id="floatingCameraBtn" aria-label="開啟相機錄影">
+                 <!-- Image hidden via CSS, used as background now -->
+                 <span class="btn_text">馬上開啟相機<br>錄製舞蹈影片</span>
+               </button>
+               <input type="file" id="danceVideoInput" accept="video/*" capture="environment" style="display: none;">
+            </div>
+
             <!-- Video Section -->
             <section id="video">
-              <h2 class="video_title">簡單點！ 國泰產險Online MV</h2>
+              <h2 class="video_title"><span>簡單點！</span> 國泰產險Online MV</h2>
               <div class="video_container">
-                <div class="video_placeholder">Video Placeholder</div>
+                <div class="video-cover" style="background-image: url('images/sec2_slide1.png'); cursor: pointer;">
+                  <div class="play-btn"></div>
+                </div>
+                <video id="campaign-video" playsinline width="100%" height="100%" preload="metadata">
+                  <source src="https://gcp.cathay-ins.com.tw/CXIDocs/EB/audio/45A0200/45A0200_2.mp4" type="video/mp4">
+                  您的瀏覽器不支援影片播放。
+                </video>
               </div>
             </section>
             
