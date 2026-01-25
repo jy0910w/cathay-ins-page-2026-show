@@ -716,7 +716,7 @@
               
               <!-- Characters -->
               <img src="images/cellphoneman.svg" alt="左側人物" class="char_left" />
-              <img src="images/musicwoman.svg" alt="右側人物" class="char_right" />
+              <img src="images/musicwoman.png" alt="右側人物" class="char_right" />
             </section>
             
             <!-- Steps Section -->
@@ -814,65 +814,149 @@
             
             <!-- Prizes Section -->
             <section id="prizes">
-              <h2 class="prizes_title">至國泰產險指定貼文留言</h2>
-              <p class="prizes_subtitle">秀出你的 <span class="green">簡單點舞蹈影片</span> / 就有機會獲得</p>
+              <h2 class="prizes_title">至國泰產險FB指定貼文留言</h2>
+              <p class="prizes_subtitle">秀出你的 <span class="green"> \ 簡單點舞蹈影片 / </span>就有機會獲得</p>
               
               <div class="prizes_grid">
                 <!-- 2nd Prize -->
                 <div class="prize_card">
-                  <div class="prize_badge">2獎 (共2名)</div>
-                  <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
-                  <div class="prize_image">Image</div>
+                  <div class="prize_badge">
+                    <span class="badge_rank">2獎</span>
+                    <span class="badge_count">(共2名)</span>
+                  </div>
+                  <div class="prize_card_body">
+                    <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
+                    <div class="prize_image">
+                      <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
+                    </div>
+                  </div>
                 </div>
                 
                 <!-- 1st Prize -->
                 <div class="prize_card first">
-                  <div class="prize_badge">頭獎 (共1名)</div>
-                  <h4 class="prize_title">Nintendo Switch 2</h4>
-                  <div class="prize_image">Image</div>
+                  <div class="prize_badge">
+                    <span class="badge_rank">頭獎</span>
+                    <span class="badge_count">(共1名)</span>
+                  </div>
+                  <div class="prize_card_body">
+                    <h4 class="prize_title">Nintendo Switch 2</h4>
+                    <div class="prize_image">
+                      <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
+                    </div>
+                  </div>
                 </div>
                 
                 <!-- 3rd Prize -->
                 <div class="prize_card">
-                  <div class="prize_badge">3獎 (共5名)</div>
-                  <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機</h4>
-                  <div class="prize_image">Image</div>
+                  <div class="prize_badge">
+                    <span class="badge_rank">3獎</span>
+                    <span class="badge_count">(共5名)</span>
+                  </div>
+                  <div class="prize_card_body">
+                    <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
+                    <div class="prize_image">
+                      <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
+                    </div>
+                  </div>
                 </div>
               </div>
               
               <div class="prizes_cta">
-                <a href="https://www.cathay-ins.com.tw/INSOCWeb/servlet/HttpDispatcher/OCH1_0000/promptForCommon?loginForwardTrx=OCH1_2000/prompt" target="_blank" class="btn">註冊/登入會員</a>
-                <a href="#" class="btn">分享影片抽好禮</a>
+                <div class="prizes_cta_group">
+                  <a href="https://www.cathay-ins.com.tw/INSOCWeb/servlet/HttpDispatcher/OCH1_0000/promptForCommon?loginForwardTrx=OCH1_2000/prompt" target="_blank" class="btn">註冊/登入會員 <span class="arrow"></span></a>
+                  <p class="cta_note">※凡國泰產險新、舊會員<br>請登入會員中心並複製專屬活動碼</p>
+                </div>
+                <div class="prizes_cta_group">
+                  <a href="#" class="btn">分享影片抽好禮 <span class="arrow"></span></a>
+                </div>
               </div>
             </section>
             
             <!-- Rules Section -->
             <section id="rules">
               <div class="rules_container">
-                <h2 class="rules_title">活動辦法</h2>
-                <div class="rules_content">
-                  <ul>
-                    <li><strong>活動期間：</strong>2026/03/18 - 04/12</li>
-                    <li><strong>活動說明：</strong>
-                      <ol>
-                        <li>本活動限國泰產險線上會員參加。</li>
-                        <li>步驟 1: 點擊活動濾鏡，錄下指定官方舞蹈動作。</li>
-                        <li>步驟 2: 下載影片存至手機。</li>
-                        <li>步驟 3: 登入會員中心，複製專屬活動碼。</li>
-                        <li>步驟 4: 至指定粉絲團貼文留言分享影片，並附上活動碼。</li>
+                <div class="rules_content" id="rulesContent">
+                  <h2 class="rules_title">活動辦法</h2>
+                  <ul class="rules_list">
+                    <li>
+                      <strong>活動期間：</strong>2026/03/18 - 04/12
+                    </li>
+                    <li>
+                      <strong>活動說明：</strong>
+                      <ol class="rules_ordered_list">
+                        <li>
+                          本活動限國泰產險線上會員(以下簡稱會員)參加，會員須於活動期間內(2026/03/18 - 04/12) 透過本活動頁面或國泰產險Facebook粉絲團之指定抽獎活動貼文連結，依指示完成以下指定步驟，即可獲得抽獎資格：
+                          <ul class="rules_sublist">
+                            <li>Step 1：點擊活動濾鏡連結</li>
+                            <li>Step 2：使用活動濾鏡，錄下指定官方舞蹈動作</li>
+                            <li>Step 3：下載影片存至手機</li>
+                            <li>Step 4：登入會員中心，複製專屬活動碼</li>
+                            <li>Step 5：至指定抽獎活動貼文留言分享影片，並附上會員專屬活動碼</li>
+                          </ul>
+                        </li>
+                        <li>
+                          於本活動期間新加入之會員，註冊時於「活動碼」欄位輸入「online2026」，可額外再享LINE POINT 100點抽獎機會，共抽出300名。
+                        </li>
                       </ol>
                     </li>
-                    <li><strong>活動獎項：</strong>
-                      <ul>
-                        <li>Nintendo Switch 2: 1組 (市價 15,900元)</li>
-                        <li>Dyson Supersonic HD15: 2組 (市價 10,900元)</li>
-                        <li>Marshall Minor IV: 5組 (市價 3,990元)</li>
-                      </ul>
+                    <li>
+                      <strong>活動獎項：</strong>
+                      <ol class="rules_ordered_list">
+                        <li>Nintendo Switch 2：1組。 (每組市價 15,900元)</li>
+                        <li>Dyson Supersonic™ HD15 吹風機：2組。 (每組市價 10,900 元)</li>
+                        <li>Marshall Minor IV 真無線藍芽耳機 第四代：5組。(每組市價 6,590 元)</li>
+                        <li>LINE POINT 100 點：300 組。(限本活動期間新加入之會員，需於2026/05/31前兌換完畢)</li>
+                      </ol>
+                    </li>
+                    <li>
+                      <strong>注意事項：</strong>
+                      <ol class="rules_ordered_list">
+                        <li>投稿影片拍攝人數不限，惟須包含會員本人入鏡。經主辦單位查驗，若影片內容未見會員本人實際參與拍攝，將不計入抽獎資格。</li>
+                        <li>符合抽獎資格者將自動納入(即免登錄)，活動將於 2026/04/30 前於國泰產險官網最新消息，以及Facebook粉絲團抽獎活動PO文中公告中獎名單，並由官方主動聯繫中獎者進行派獎作業。</li>
+                        <li>【Nintendo Switch 2、Dyson吹風機、 Marshall 藍牙耳機】領獎方式：國泰產險將於 2026/4/30 前，透過會員資料中所留之 Email 通知中獎者(未中獎者恕不另行通知)，贈品將於收到憑證後的 4-6 週內寄出，若因不可控之因素，贈品將視情形延後發送(恕無法指定顏色與款式)，如遇產品缺貨，統一改由同等價值之遠東 SOGO 百貨好禮即享券代替，得獎者不得以圖片做為爭議要求替換現金或其它商品。</li>
+                        <li>【LINE POINT 100 點】領獎方式：序號將於 4/30 前統一派送至會員手機及Email，領獎步驟屆時將與得獎名單統一公布於官網最新消息及Facebook粉絲團抽獎活動PO文。</li>
+                        <li>本活動配合「保險業辦理電子商務應注意事項」，限年滿 18 歲之自然人參加，參加者須符合活動期間投保指定活動任務或險種之條件，且獎項發送時會員身分需為有效狀態（若未註冊成功、取消、或刪除會員資料，皆為無效狀態），指定險種亦不得取消或退保，以符合得獎資格，否則喪失領獎權利。</li>
+                        <li>參加者於參加本活動時，即表示同意本活動辦法，並充份知悉與同意以下事項：本活動由國泰世紀產物保險股份有限公司（以下簡稱主辦單位）舉辦，主辦單位得因本活動之需要，依個人資料保護相關規定，於活動及作業所需之期間內，以電子檔或紙本形式於我國境內蒐集、處理、利用其個人資料（包含活動兌獎及相關申報稅額使用等），中獎者應同意本公司公佈中獎名單於國泰產險網站及全台營業據點，以確保本活動公正公開。除事先取得參加者同意或法令另有規定外，主辦單位處理或利用上開資料之期間、地區、對象及方式，將限於達成上開特定目的之必要範圍內為之。參加者可自由選擇是否提供完整個人資訊，惟若資訊不完整者，將無法參加本活動。</li>
+                        <li>本活動如有任何因網路、行動裝置或其他不可歸責於主辦單位之事由，致參加者所寄出、填寫或登錄之資料有遺失、錯誤、無法辨識或毀損等情形，主辦單位不負任何法律責任。</li>
+                        <li>主辦單位有權檢視得獎情況是否有人為操作之行為，對於以偽造、詐欺或其他不正當之方式意圖兌領之參加者，主辦單位有權取消其得獎資格或拒絕其參與本活動。</li>
+                        <li>中獎者須於領獎期限內完成領獎手續，逾期未完成領獎程序或不符領獎程序者，視為放棄領獎權利，亦不得折換現金或兌換其他商品。本活動贈品以實物為準，無法由中獎人挑選款式及顏色，且獎項經兌換後恕不得退還。</li>
+                        <li>中獎贈品寄送地限中華民國境內台、澎、金馬地區，上述以外地區或其他領獎方式恕無法配合。</li>
+                        <li>依稅法規定，得獎者若為中華民國境內居住之個人，且年度所得獎項價值累積超過新臺幣（以下同）1,000 元者，主辦單位將於翌年開立所得扣繳憑單予得獎者。如所得獎項價值達 20,010元（含）時，得獎者須先繳交 10%機會中獎稅金，始可領獎。得獎人若非中華民國境內居住之個人(即在中華民國境內居住未達183天之本國人及外國人)，不論得獎獎項價值，均須先就得獎所得扣繳20%機會中獎稅金，始可領獎，主辦單位並將依法開立所得扣繳憑單。若未能依法繳納應繳稅額，即視為喪失得獎資格。因參加本活動而須支付之任何稅捐皆為參加者之義務，概與主辦單位無關。前述稅捐法規如有更新或變動者，依修正後之規定辦理。</li>
+                        <li>主辦單位非獎品製造者或提供者，與各項獎品或服務之製造或提供廠商無任何代理或合夥關係，且本活動獎品之保固期限均依廠商出廠時實際提供者為準。如領取後對獎品之使用方式、售後服務、保固等發生任何爭議，概與主辦單位無關。如遇產品缺貨或不可抗力之事由導致獎品內容變更，主辦單位有權變更贈品，改由等值商品取代之，得獎者不得要求折現或轉換其他商品。</li>
+                        <li>主辦單位保有決定取消、終止、修改或暫停本活動相關內容之權利，並得以公告方式通知參加者。如有未盡事宜，悉依主辦單位相關規定或解釋辦理。</li>
+                        <li>本活動之登入、交易、申請開通、抽獎資格、兌獎紀錄、中獎紀錄均以主辦單位電腦系統紀錄為準，主辦單位有權檢視各項交易、抽獎及相關紀錄，若參加者有任何違反活動注意事項、利用程式惡意影響活動結果或任何破壞公平性及其他非法行為等，主辦單位保有取消其參加抽獎及中獎資格之權利。</li>
+                      </ol>
                     </li>
                   </ul>
                 </div>
+                <div class="rules_toggle_btn" id="rulesToggleBtn">
+                  <img src="images/blacklightingL.svg" alt="展開全部注意事項" id="rulesToggleImg" />
+                </div>
               </div>
             </section>
+            
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var rulesContent = document.getElementById('rulesContent');
+                var rulesToggleBtn = document.getElementById('rulesToggleBtn');
+                var rulesToggleImg = document.getElementById('rulesToggleImg');
+                
+                if (rulesToggleBtn && rulesContent && rulesToggleImg) {
+                  rulesToggleBtn.addEventListener('click', function() {
+                    rulesContent.classList.toggle('expanded');
+                    if (rulesContent.classList.contains('expanded')) {
+                      rulesToggleImg.src = 'images/blacklightingR.svg';
+                      rulesToggleImg.alt = '收起注意事項';
+                    } else {
+                      rulesToggleImg.src = 'images/blacklightingL.svg';
+                      rulesToggleImg.alt = '展開全部注意事項';
+                      // Scroll back to rules title if needed
+                      document.querySelector('.rules_title').scrollIntoView({behavior: 'smooth'});
+                    }
+                  });
+                }
+              });
+            </script>
             
             <!-- Video Modal -->
             <div id="video_modal" class="video_modal">

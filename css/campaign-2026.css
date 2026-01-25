@@ -37,20 +37,22 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   width: 100%;
   background: white; /* 保持底色為白 */
   position: relative;
-  padding: 6rem 1rem 2rem;
+  padding: 6rem 1rem 6rem; /* Increased padding */
+  min-height: 45vw; /* Ensure container is tall enough for the background */
   text-align: center;
   overflow: visible;
+  z-index: 20; /* Ensure hero is above steps for overlapping characters */
 }
 
 /* Background Image via Pseudo-element for independent positioning */
 #event_2026_dance #hero::before {
   content: '';
   position: absolute;
-  top: 0px; /* 手機版 Header 高度避讓 */
+  top: 0rem; /* Moved up */
   left: 0;
   width: 100%;
-  height: calc(100%);
-  background: url('../images/section1.svg') no-repeat center top;
+  height: calc(100%); /* Fill the container */
+  background: url('../images/section1-3.svg') no-repeat center top;
   background-size: cover;
   z-index: 0;
 }
@@ -58,11 +60,6 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 @media (min-width: 1024px) {
   #event_2026_dance #hero {
     padding: 8rem 2rem 3rem;
-  }
-  
-  #event_2026_dance #hero::before {
-    top: 0px; /* 桌機版 Header 高度避讓 */
-    height: calc(100%);
   }
 }
 
@@ -75,10 +72,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 /* 左側人物 - 手機男 */
 #event_2026_dance #hero .char_left {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 30%; /* 手機版大小 */
-  max-width: 300px;
+  bottom: -3rem; /* Overlap with next section */
+  left: 5%;
+  width: 23%; /* 手機版大小 */
+  max-width: 480px;
   height: auto;
   z-index: 5;
   transform: translateX(-10%); /* 稍微往左移 */
@@ -87,15 +84,15 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 /* 右側人物 - 音樂女 */
 #event_2026_dance #hero .char_right {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 30%; /* 手機版大小 */
-  max-width: 300px;
+  bottom: -1.5rem; /* Overlap with next section */
+  right: 6%;
+  width: 19%; /* 手機版大小 */
+  max-width: 380px;
   height: auto;
   z-index: 5;
   transform: translateX(10%); /* 稍微往右移 */
 }
-
+/*
 @media (min-width: 768px) {
   #event_2026_dance #hero .char_left,
   #event_2026_dance #hero .char_right {
@@ -119,25 +116,19 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     transform: none;
   }
 }
-
+*/
 #event_2026_dance #hero .hero_title {
   margin-bottom: 2rem;
 }
 
 #event_2026_dance #hero .hero_title .line1 {
-  font-size: 2rem;
+  font-size: 4.28333vw;
   font-weight: 700;
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-}
-
-@media (min-width: 1024px) {
-  #event_2026_dance #hero .hero_title .line1 {
-    font-size: 2.5rem;
-  }
 }
 
 #event_2026_dance #hero .hero_title .line1 .yellow {
@@ -149,14 +140,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #hero .hero_title .line2 {
-  font-size: 3rem;
+  font-size: 5.83333vw;
   font-weight: 800;
-}
-
-@media (min-width: 1024px) {
-  #event_2026_dance #hero .hero_title .line2 {
-    font-size: 3.5rem;
-  }
 }
 
 #event_2026_dance #hero .hero_title .line2 .yellow {
@@ -168,7 +153,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #hero .hero_subtitle {
-  font-size: 2rem;
+  font-size: 4.16667vw;
   font-weight: 800;
   color: #3F3F3F;
   margin-top: 5rem;
@@ -179,7 +164,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #hero .hero_subtitle .big_num {
-  font-size: 1.5em;
+  font-size: 6.14583vw;
   line-height: 1;
   margin: 0 0.25rem;
   transform: translateY(-2px);
@@ -195,10 +180,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #hero .hero_cta {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 3.25rem;
   margin-bottom: 3rem;
   flex-wrap: wrap;
-  max-width: 450px;
+  max-width: 740px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -206,14 +191,20 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #hero .hero_cta .btn {
   flex: 1;
   min-width: 100px;
-  font-size: 1.5rem;
+  font-size: 2.34vw;
   font-weight: 700;
   border-radius: 9999px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding-right: 2.5rem;
+  display: flex !important; /* Force flex */
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1rem 2rem; /* Symmetrical padding */
+  gap: 1rem; /* Space between text and arrow */
+  height: 5rem; /* Explicit height */
   background: #FFC83B;
   color: #3F3F3F;
   text-align: center;
@@ -222,14 +213,13 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #hero .hero_cta .btn::after {
   content: '';
-  position: absolute;
-  right: 1.8rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 16px;
+  position: relative; /* Changed from absolute */
+  display: block;
+  width: 0.75rem;
+  height: 2rem;
   background: url('../images/icon-arrow--line.svg') no-repeat center center;
   background-size: contain;
+  /* Removed absolute positioning properties */
 }
 
 #event_2026_dance #hero .hero_cta .btn:hover {
@@ -281,7 +271,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     100% 100%
   );
   transform: translateY(-100%);
-  z-index: 1;
+  z-index: 21;
 }
 
 @media (min-width: 768px) {
@@ -369,12 +359,12 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   font-weight: 700;
   padding: 1rem 0 1rem;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 2.34vw;
   width: 100%;
 }
 
 #event_2026_dance #steps .step_title {
-  font-size: 1.125rem;
+  font-size: 1.66667vw;
   font-weight: 450;
   margin: 1rem 1rem 1rem;
   line-height: 1.4;
@@ -411,31 +401,27 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   text-align: center;
   padding: 1rem 1.5rem;
   border-radius: 2rem;
-  font-size: 1.5rem;
+  font-size: 2.34vw;
   font-weight: 700;
   text-decoration: none;
   width: 120%;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   position: relative;
 }
 
 #event_2026_dance #steps .step_btn .arrow {
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
   display: inline-block;
-  width: 6px;
-  height: 10px;
+  width: 0.75rem;
+  height: 2rem;
   background: url('../images/icon-arrow--line.svg') no-repeat center center;
   background-size: contain;
 }
 
 #event_2026_dance #steps .step_note {
-  font-size: 1rem;
+  font-size: 1.35417vw;
   color: #6b7280;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -586,7 +572,6 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
   
   #event_2026_dance #steps .incentive_banner h3 {
-    font-size: 3cqw !important; /* Scale relative to container width */
     line-height: 1.4;
     white-space: nowrap;
   }
@@ -597,7 +582,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #steps .incentive_banner h3 {
-  font-size: 3cqw;
+  font-size: 2.34vw;
   font-weight: 500;
   color: #3F3F3F; /* Dark text */
   margin: 0;
@@ -609,12 +594,12 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   width: 100%;
   background: white url('../images/section2.svg') no-repeat center top;
   background-size: 100% auto;
-  padding: 2rem 1rem 3rem;
+  padding: 2rem 1rem 4rem;
   text-align: center;
 }
 
 #event_2026_dance #video .video_title {
-  font-size: 3.33333vw; /* 64px at 1920px */
+  font-size: 4.16667vw;
   font-weight: 700;
   margin-bottom: 2rem;
   color: #3F3F3F;
@@ -714,50 +699,38 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   margin-left: 5px; /* Visual center adjustment */
 }
 
-#event_2026_dance #video .video_placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #1f2937;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.5rem;
-}
-
 /* ========== Prizes Section ========== */
 #event_2026_dance #prizes {
   width: 100%;
-  background: #FFF8E1;
+  background: white url('../images/section3.svg') no-repeat center top;
+  background-size: 100% auto;
   padding: 4rem 1rem;
 }
 
 #event_2026_dance #prizes .prizes_title {
-  font-size: 1.875rem;
-  font-weight: 700;
+  font-size: 5.83333vw;
+  font-weight: 800;
   text-align: center;
   margin-bottom: 1rem;
   color: #3F3F3F;
 }
 
 #event_2026_dance #prizes .prizes_subtitle {
-  font-size: 1.25rem;
+  font-size: 4.16667vw;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  color: #333;
+  color: #3F3F3F;
 }
 
 #event_2026_dance #prizes .prizes_subtitle .green {
-  color: #059669;
+  color: #0ecd5c;
 }
 
 #event_2026_dance #prizes .prizes_grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 5rem;
   max-width: 80rem;
   margin: 0 auto 3rem;
   padding: 0 1rem;
@@ -766,18 +739,20 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 @media (min-width: 768px) {
   #event_2026_dance #prizes .prizes_grid {
     grid-template-columns: repeat(3, 1fr);
-    align-items: center;
+    align-items: center; /* Vertically center cards */
   }
 }
 
 #event_2026_dance #prizes .prize_card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 1rem;
+  background: #FFC83B;
+  padding: 0 1px 1px 1px;
+  border-radius: 1.5rem;
   text-align: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 #event_2026_dance #prizes .prize_card:hover {
@@ -785,57 +760,84 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prize_card.first {
-  padding: 2rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
   #event_2026_dance #prizes .prize_card.first {
-    transform: scale(1.1);
+    width: 27.08333vw;
+    height: 27.93666vw;
+    transform: none; /* Remove scale to use explicit size */
   }
 }
 
-#event_2026_dance #prizes .prize_card .prize_badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #FFC83B;
-  color: white;
+#event_2026_dance #prizes .prize_badge {
+  background: transparent;
+  color: #3F3F3F;
   font-weight: 700;
-  padding: 0.25rem 0;
-  border-radius: 1rem 1rem 0 0;
-  margin: -1.5rem -1.5rem 1rem;
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+  line-height: 1.2;
 }
 
-#event_2026_dance #prizes .prize_card.first .prize_badge {
-  background: #FFC83B;
-  padding: 0.5rem 0;
-  margin: -2rem -2rem 1.5rem;
+#event_2026_dance #prizes .prize_badge .badge_rank {
+  display: block;
+  font-size: 3.2292vw;
+}
+
+#event_2026_dance #prizes .prize_badge .badge_count {
+  display: block;
+  font-size: 2.08333vw;
+  margin-top: 0.25rem;
+}
+
+#event_2026_dance #prizes .prize_card_body {
+  background: white;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#event_2026_dance #prizes .prize_card.first .prize_card_body {
+  padding: 2rem;
 }
 
 #event_2026_dance #prizes .prize_card .prize_title {
+  font-size: 1.6667vw !important;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #3F3F3F;
+  font-family: "Montserrat", sans-serif;
 }
 
 #event_2026_dance #prizes .prize_card.first .prize_title {
-  font-size: 1.25rem;
+  margin-bottom: 0.25rem; /* Reduced spacing */
 }
 
 #event_2026_dance #prizes .prize_card .prize_image {
-  background: #f3f4f6;
-  height: 8rem;
-  margin: 1rem 0;
+  background: #FFFFFF;
+  height: 12rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #6b7280;
+  border-radius: 0.5rem; /* Small radius for image box */
 }
 
 #event_2026_dance #prizes .prize_card.first .prize_image {
-  height: 10rem;
+  height: 15rem;
+  margin-top: 0.25rem; /* Reduced spacing */
+}
+
+#event_2026_dance #prizes .prize_card .prize_image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
 
 #event_2026_dance #prizes .prizes_cta {
@@ -846,35 +848,55 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prizes_cta .btn {
+  display: flex;
   padding: 1rem 2rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  border-radius: 9999px;
+  border-radius: 2rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding-right: 2.5rem;
   background: #FFC83B;
-  color: white;
+  color: #3F3F3F;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 4rem; /* Explicit height to match hero button */
+  box-sizing: border-box;
 }
 
-#event_2026_dance #prizes .prizes_cta .btn::after {
-  content: '>';
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+#event_2026_dance #prizes .prizes_cta .btn .arrow {
+  display: inline-block;
+  width: 6px;
+  height: 10px;
+  background: url('../images/icon-arrow--line.svg') no-repeat center center;
+  background-size: contain;
 }
 
 #event_2026_dance #prizes .prizes_cta .btn:hover {
   background: #d9a83a;
 }
 
+#event_2026_dance #prizes .prizes_cta_group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#event_2026_dance #prizes .cta_note {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
 /* ========== Rules Section ========== */
 #event_2026_dance #rules {
   width: 100%;
-  background: #f9fafb;
+  background: #FFFFFF;
   padding: 3rem 1rem;
   display: flex;
   justify-content: center;
@@ -882,50 +904,165 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #rules .rules_container {
   width: 100%;
-  max-width: 56rem;
+  max-width: 88.54vw;
   padding: 0 1rem;
-}
-
-#event_2026_dance #rules .rules_title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-  color: #374151;
-  margin-bottom: 2rem;
 }
 
 #event_2026_dance #rules .rules_content {
   background: white;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
-  color: #4b5563;
+  padding: 0 0 2.5rem 0; /* Remove top/side padding, keep bottom */
+  border: 1px solid #e5e5e5;
+  border-radius: 1.5rem; /* Updated to 1.5rem */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  font-size: 1.61458vw;
+  color: #333;
   line-height: 1.75;
+  
+  /* Collapse Logic */
+  max-height: 1080px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.5s ease-in-out;
 }
 
-#event_2026_dance #rules .rules_content ul {
-  list-style: disc;
-  padding-left: 1.25rem;
-}
-
-#event_2026_dance #rules .rules_content ul li {
-  margin-bottom: 0.5rem;
-}
-
-#event_2026_dance #rules .rules_content ol {
-  list-style: decimal;
-  padding-left: 1.25rem;
-  margin-top: 0.5rem;
-}
-
-#event_2026_dance #rules .rules_content ol li {
-  margin-bottom: 0.5rem;
-}
-
-#event_2026_dance #rules .rules_content strong {
+#event_2026_dance #rules .rules_title {
+  font-size: 4.16667vw;
   font-weight: 700;
-  color: #1f2937;
+  text-align: center;
+  color: #9CA3AF;
+  background-color: #f3f4f6; /* Light gray background */
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 0; /* Vertical padding */
+  border-bottom: 1px solid #e5e5e5;
+  width: 100%; /* Full width */
+  border-radius: 1.5rem 1.5rem 0 0; /* Match container top corners */
+}
+
+#event_2026_dance #rules .rules_content.expanded {
+  max-height: 5000px; /* Large enough number to fit all content */
+}
+
+/* Gradient Overlay */
+#event_2026_dance #rules .rules_content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 480px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 2; /* Ensure it stays on top of relative children */
+}
+
+#event_2026_dance #rules .rules_content.expanded::after {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#event_2026_dance #rules .rules_list {
+  list-style: none;
+  padding: 0 4.16667vw;
+  margin: 0;
+}
+
+#event_2026_dance #rules .rules_list > li {
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-left: 1.5rem; /* Indent for bullet */
+}
+
+/* Solid Black Bullet */
+#event_2026_dance #rules .rules_list > li::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #000;
+  font-size: 0.8em;
+  line-height: 2; /* Adjust vertical alignment */
+}
+
+#event_2026_dance #rules .rules_list > li > strong {
+  color: #000;
+  font-weight: 700;
+}
+
+#event_2026_dance #rules .rules_sublist {
+  list-style: none; /* Removed default disc */
+  padding-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#event_2026_dance #rules .rules_sublist li {
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+/* Hollow Circle Bullet */
+#event_2026_dance #rules .rules_sublist li::before {
+  content: '◎';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #333;
+}
+
+#event_2026_dance #rules .rules_ordered_list {
+  list-style: none; /* Custom numbering */
+  padding-left: 0;
+  margin-top: 0.5rem;
+  counter-reset: rules-counter;
+}
+
+#event_2026_dance #rules .rules_ordered_list > li {
+  margin-bottom: 0.75rem;
+  padding-left: 3rem;
+  position: relative;
+}
+
+#event_2026_dance #rules .rules_ordered_list > li::before {
+  counter-increment: rules-counter;
+  content: counter(rules-counter) ". ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: normal;
+}
+
+#event_2026_dance #rules .rules_note {
+  color: #333; /* Standard color */
+  font-weight: normal;
+  margin-top: 0.5rem;
+  padding-left: 1.5rem; /* Align with sublist */
+}
+
+#event_2026_dance #rules .rules_toggle_btn {
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  margin: 1rem auto 0; /* Changed from negative margin to positive spacing */
+  position: relative;
+  z-index: 10;
+  width: fit-content;
+  box-shadow: none;
+  transition: transform 0.3s;
+  user-select: none;
+}
+
+#event_2026_dance #rules .rules_toggle_btn:hover {
+  background: transparent;
+  transform: scale(1.05);
+}
+
+#event_2026_dance #rules .rules_toggle_btn img {
+  display: block;
+  height: 3rem; /* Set a reasonable height for the icon */
+  width: auto;
 }
 
 /* ========== Video Modal ========== */
