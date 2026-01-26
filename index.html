@@ -819,10 +819,10 @@
               
               <div class="prizes_grid">
                 <!-- 2nd Prize -->
-                <div class="prize_card">
+                <div class="prize_card second">
                   <div class="prize_badge">
                     <span class="badge_rank">2獎</span>
-                    <span class="badge_count">(共2名)</span>
+                    <span class="badge_count">共2名</span>
                   </div>
                   <div class="prize_card_body">
                     <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
@@ -836,7 +836,7 @@
                 <div class="prize_card first">
                   <div class="prize_badge">
                     <span class="badge_rank">頭獎</span>
-                    <span class="badge_count">(共1名)</span>
+                    <span class="badge_count">共1名</span>
                   </div>
                   <div class="prize_card_body">
                     <h4 class="prize_title">Nintendo Switch 2</h4>
@@ -847,10 +847,10 @@
                 </div>
                 
                 <!-- 3rd Prize -->
-                <div class="prize_card">
+                <div class="prize_card third">
                   <div class="prize_badge">
                     <span class="badge_rank">3獎</span>
-                    <span class="badge_count">(共5名)</span>
+                    <span class="badge_count">共5名</span>
                   </div>
                   <div class="prize_card_body">
                     <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
@@ -928,9 +928,9 @@
                       </ol>
                     </li>
                   </ul>
-                </div>
-                <div class="rules_toggle_btn" id="rulesToggleBtn">
-                  <img src="images/blacklightingL.svg" alt="展開全部注意事項" id="rulesToggleImg" />
+                  <div class="rules_toggle_btn" id="rulesToggleBtn">
+                    <img src="images/arrowdown.svg" alt="展開全部注意事項" id="rulesToggleImg" />
+                  </div>
                 </div>
               </div>
             </section>
@@ -945,10 +945,10 @@
                   rulesToggleBtn.addEventListener('click', function() {
                     rulesContent.classList.toggle('expanded');
                     if (rulesContent.classList.contains('expanded')) {
-                      rulesToggleImg.src = 'images/blacklightingR.svg';
+                      rulesToggleImg.src = 'images/arrowup.svg';
                       rulesToggleImg.alt = '收起注意事項';
                     } else {
-                      rulesToggleImg.src = 'images/blacklightingL.svg';
+                      rulesToggleImg.src = 'images/arrowdown.svg';
                       rulesToggleImg.alt = '展開全部注意事項';
                       // Scroll back to rules title if needed
                       document.querySelector('.rules_title').scrollIntoView({behavior: 'smooth'});
