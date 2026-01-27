@@ -170,6 +170,39 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+    // Fix for Line in-app browser on Android not opening camera
+    // Line sometimes blocks file inputs unless they have specific attributes
+    // We can try to force a click on a newly created input if the original one fails, 
+    // but usually ensuring the input has accept="video/*" and capture="user" (or environment) is key.
+    // Let's check the input attributes.
+    if (!videoInput.hasAttribute('accept')) {
+        videoInput.setAttribute('accept', 'video/*');
+    }
+    
+    // FOR ANDROID LINE: If it goes straight to gallery, it might be missing 'capture'.
+    // If we want to offer BOTH camera and gallery, 'capture' should normally be omitted.
+    // But some Android webviews (like Line) might default to gallery if capture is missing.
+    // To FORCE camera or at least prioritize it, we can try adding capture="camcorder" or capture="environment".
+    // However, this might disable gallery.
+    // 
+    // User report: "Opens album directly instead of camera".
+    // User Goal: Wants camera access.
+    //
+    // Strategy: Detect Android + Line, and force 'capture' attribute.
+    var isAndroid = /Android/.test(navigator.userAgent);
+    var isLine = /Line/.test(navigator.userAgent);
+    
+    if (isAndroid && isLine) {
+        // Line on Android often needs 'capture' to trigger camera directly.
+        // We can try 'camcorder' for video.
+        videoInput.setAttribute('capture', 'camcorder');
+    }
+
+    // Attempt to workaround Line Android issue by resetting value on click
+    videoInput.onclick = function() {
+        this.value = null;
+    };
+
     cameraBtn.addEventListener('click', function() {
       // Trigger the hidden file input
       videoInput.click();
@@ -214,8 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
           previewModal.style.flexDirection = 'column';
           previewModal.style.alignItems = 'center';
           previewModal.style.justifyContent = 'center';
-          // Detect OS for instruction text
-          var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
           
           previewModal.innerHTML = `
             <div style="color: white; margin-bottom: 20px; text-align: center; width: 90%;">
@@ -250,7 +281,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // --- Update Instruction Text based on OS ---
         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        var isLine = /Line/.test(navigator.userAgent);
         var instructionTextEl = document.getElementById('preview_instruction_text');
+        var shareBtn = document.getElementById('share_video_btn');
+        var downloadLink = document.getElementById('fallback_download_link');
         
         if (isIOS) {
            instructionTextEl.innerHTML = `
@@ -258,23 +292,28 @@ document.addEventListener('DOMContentLoaded', function() {
              請點擊下方「儲存/分享」按鈕，<br>
              並在選單中選擇 <span style="border: 1px solid #fff; padding: 2px 5px; border-radius: 4px; font-size: 0.8em;">儲存影片</span> 即可存入相簿。
            `;
+           // Show share button for iOS
+           if (navigator.canShare && navigator.canShare({ files: [file] })) {
+               shareBtn.style.display = 'block';
+               downloadLink.style.display = 'none';
+           } else {
+               shareBtn.style.display = 'none';
+               downloadLink.style.display = 'block';
+           }
         } else {
+           // Android or others
            instructionTextEl.innerHTML = `
-             影片已錄製完成！<br>
-             請點擊下方按鈕進行儲存或分享。
+             影片已錄製完成，<br>
+             快前往活動貼文進行上傳吧！
            `;
+           // Hide share/save buttons for Android as requested
+           shareBtn.style.display = 'none';
+           downloadLink.style.display = 'none';
         }
         
         // --- Update Logic for Share/Save Button (Run every time file changes) ---
-        var shareBtn = document.getElementById('share_video_btn');
-        var downloadLink = document.getElementById('fallback_download_link');
-        
-        // Check if Web Share API supports files (iOS 15+, Android Chrome)
-        // Use .onclick to replace previous event handler with new closure variables (file, url)
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-           shareBtn.style.display = 'block';
-           downloadLink.style.display = 'none';
-           
+        // Only attach handler if button is visible (which is mainly iOS now)
+        if (shareBtn.style.display !== 'none') {
            shareBtn.onclick = function() {
              navigator.share({
                files: [file],
@@ -284,11 +323,9 @@ document.addEventListener('DOMContentLoaded', function() {
              .then(() => console.log('Share successful'))
              .catch((error) => console.log('Share failed', error));
            };
-        } else {
-           // Fallback for desktop or older devices
-           shareBtn.style.display = 'none';
-           downloadLink.style.display = 'block';
-           
+        }
+        
+        if (downloadLink.style.display !== 'none') {
            downloadLink.onclick = function() {
              var a = document.createElement('a');
              a.style.display = 'none';
