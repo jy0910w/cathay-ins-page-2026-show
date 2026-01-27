@@ -180,41 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
           `;
           document.body.appendChild(previewModal);
           
-          // --- Logic for Share/Save Button ---
-          var shareBtn = document.getElementById('share_video_btn');
-          var downloadLink = document.getElementById('fallback_download_link');
-          
-          // Check if Web Share API supports files (iOS 15+, Android Chrome)
-          if (navigator.canShare && navigator.canShare({ files: [file] })) {
-             shareBtn.style.display = 'block';
-             downloadLink.style.display = 'none'; // Hide fallback if share is available
-             
-             shareBtn.addEventListener('click', function() {
-               navigator.share({
-                 files: [file],
-                 title: '我的舞蹈影片',
-                 text: '參加國泰產險活動抽大獎！'
-               })
-               .then(() => console.log('Share successful'))
-               .catch((error) => console.log('Share failed', error));
-             });
-          } else {
-             // Fallback for desktop or older devices
-             downloadLink.style.display = 'block';
-          }
-          
-          // Fallback download logic
-          downloadLink.addEventListener('click', function() {
-             var a = document.createElement('a');
-             a.style.display = 'none';
-             a.href = url;
-             var timestamp = new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15);
-             a.download = 'cathay-dance-' + timestamp + '.mp4';
-             document.body.appendChild(a);
-             a.click();
-             setTimeout(function() { document.body.removeChild(a); }, 100);
-          });
-          
           document.getElementById('close_preview_btn').addEventListener('click', function() {
              previewModal.style.display = 'none';
              // Revoke URL to free memory
@@ -229,15 +194,40 @@ document.addEventListener('DOMContentLoaded', function() {
         player.src = url;
         previewModal.style.display = 'flex';
         
-        // Re-check share support every time (in case browser capabilities change or different file type)
+        // --- Update Logic for Share/Save Button (Run every time file changes) ---
         var shareBtn = document.getElementById('share_video_btn');
         var downloadLink = document.getElementById('fallback_download_link');
+        
+        // Check if Web Share API supports files (iOS 15+, Android Chrome)
+        // Use .onclick to replace previous event handler with new closure variables (file, url)
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
            shareBtn.style.display = 'block';
            downloadLink.style.display = 'none';
+           
+           shareBtn.onclick = function() {
+             navigator.share({
+               files: [file],
+               title: '我的舞蹈影片',
+               text: '參加國泰產險活動抽大獎！'
+             })
+             .then(() => console.log('Share successful'))
+             .catch((error) => console.log('Share failed', error));
+           };
         } else {
+           // Fallback for desktop or older devices
            shareBtn.style.display = 'none';
            downloadLink.style.display = 'block';
+           
+           downloadLink.onclick = function() {
+             var a = document.createElement('a');
+             a.style.display = 'none';
+             a.href = url;
+             var timestamp = new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15);
+             a.download = 'cathay-dance-' + timestamp + '.mp4';
+             document.body.appendChild(a);
+             a.click();
+             setTimeout(function() { document.body.removeChild(a); }, 100);
+           };
         }
       }
     });
