@@ -1234,14 +1234,22 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     padding-left: 0;
     padding-right: 0;
     overflow: hidden; /* Hide scrollbar for section but allow grid to scroll */
+    position: relative; /* Context for arrows */
+  }
+
+  /* Arrows for mobile prizes - handled by JS now for interactivity */
+  /* Kept hidden to avoid duplication with JS inserted arrows */
+  #event_2026_dance #prizes::before,
+  #event_2026_dance #prizes::after {
+    display: none;
   }
 
   #event_2026_dance #prizes .prizes_grid {
     display: flex; /* Use flex instead of grid for scrolling */
     flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 1.5rem;
-    padding: 1rem 1.5rem 2rem; /* Add padding for scroll space and shadow */
+    gap: 1rem; /* Reduce gap */
+    padding: 1rem 3.5rem 2rem; /* Add side padding for arrows */
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     justify-content: flex-start; /* Align start */
@@ -1258,18 +1266,18 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   /* Reorder items: 1st Prize first, then others */
   #event_2026_dance #prizes .prize_card.first {
     order: -1; /* Move to first position */
-    min-width: 85vw; /* Card takes mostly full width */
+    min-width: 70vw; /* Reduced from 85vw */
     scroll-snap-align: center;
-    width: 85vw;
+    width: 70vw; /* Reduced from 85vw */
     height: auto;
     aspect-ratio: auto;
     align-self: stretch; /* Ensure it stretches to match tallest card */
   }
   
   #event_2026_dance #prizes .prize_card:not(.first) {
-    min-width: 85vw;
+    min-width: 70vw; /* Reduced from 85vw */
     scroll-snap-align: center;
-    width: 85vw;
+    width: 70vw; /* Reduced from 85vw */
     height: auto;
     aspect-ratio: auto;
     align-self: stretch; /* Stretch to match height of tallest card if needed */
@@ -1378,26 +1386,62 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   /* Unify Prize Card Padding and Spacing on Mobile */
   #event_2026_dance #prizes .prize_card.first .prize_card_body,
   #event_2026_dance #prizes .prize_card:not(.first) .prize_card_body {
-    padding: 1.5rem;
+    padding: 0.75rem 1rem; /* Reduce vertical padding significantly */
   }
   
   #event_2026_dance #prizes .prize_card.first .prize_title,
   #event_2026_dance #prizes .prize_card:not(.first) .prize_title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Minimize margin */
+    font-size: 1rem !important; /* Slightly reduce font size if needed */
   }
   
-  /* Reduce Prize Badge height on Mobile */
+  /* Reduce image container height */
+  #event_2026_dance #prizes .prize_card .prize_image {
+    padding: 0.25rem; /* Further reduce padding around image */
+    flex: 0 0 auto; /* Stop it from growing too much */
+    height: 8rem; /* Set a specific, smaller height for mobile images */
+  }
+  
+  /* Reduce Prize Badge height on Mobile - Restoring to safer value */
   #event_2026_dance #prizes .prize_badge {
-    min-height: 15%;
-    flex-basis: 15%;
+    min-height: 25%; /* Increased from 20% */
+    flex-basis: 25%;
   }
 
   /* Reduce Rules initial height on Mobile */
   #event_2026_dance #rules .rules_content {
-    max-height: 600px; /* Reduced from 1080px */
+    max-height: 400px; /* Reduced from 1080px */
   }
   
   #event_2026_dance #rules .rules_content::after {
-    height: 300px; /* Reduced gradient height */
+    height: 200px; /* Reduced gradient height */
+  }
+
+  /* Mobile Prize Navigation Arrows (Controlled by JS) */
+  .prize_nav_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url('../images/icon-arrow--line.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40%; /* Icon size */
+    z-index: 20;
+    cursor: pointer;
+    display: none; /* JS toggles this */
+    background-color: rgba(255, 255, 255, 0.8); /* White circle background for visibility */
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .prize_nav_prev {
+    left: 0.25rem;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .prize_nav_next {
+    right: 0.25rem;
   }
 }

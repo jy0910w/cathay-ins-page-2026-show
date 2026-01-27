@@ -92,6 +92,59 @@
     });
   }
 
+  // Mobile Prizes Navigation Arrows
+  // The CSS pseudo-elements are for display, but we'll add click handlers to the container
+  // to detect clicks near the edges if the user taps the arrows
+  const prizesSection = document.getElementById('prizes');
+  const prizesGrid = document.querySelector('.prizes_grid');
+  
+  if (prizesSection && prizesGrid) {
+    // Add real clickable arrows for better UX (optional overlay elements could also work)
+    // Here we'll just check click coordinates on the container relative to width
+    
+    // Create actual clickable arrow elements for better reliability than pseudo-elements
+    const leftArrow = document.createElement('div');
+    leftArrow.className = 'prize_nav_arrow prize_nav_prev';
+    // Styles moved to CSS class .prize_nav_arrow to fix path issues
+    
+    const rightArrow = document.createElement('div');
+    rightArrow.className = 'prize_nav_arrow prize_nav_next';
+    
+    // Only append if screen is small
+    if (window.innerWidth < 1024) {
+      prizesSection.appendChild(leftArrow);
+      prizesSection.appendChild(rightArrow);
+      leftArrow.style.display = 'block';
+      rightArrow.style.display = 'block';
+    }
+    
+    // Handle scrolling
+    const scrollAmount = window.innerWidth * 0.75; // Scroll by roughly one card width
+    
+    leftArrow.addEventListener('click', function() {
+      prizesGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    
+    rightArrow.addEventListener('click', function() {
+      prizesGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+    
+    // Resize handler
+    window.addEventListener('resize', function() {
+      if (window.innerWidth < 1024) {
+         if (!prizesSection.contains(leftArrow)) {
+             prizesSection.appendChild(leftArrow);
+             prizesSection.appendChild(rightArrow);
+         }
+         leftArrow.style.display = 'block';
+         rightArrow.style.display = 'block';
+      } else {
+         leftArrow.style.display = 'none';
+         rightArrow.style.display = 'none';
+      }
+    });
+  }
+
 })();
 
 // Floating Camera Button Logic
