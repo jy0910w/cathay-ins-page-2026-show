@@ -214,8 +214,15 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     cameraBtn.addEventListener('click', function() {
-      // Trigger the hidden file input
-      videoInput.click();
+      if (isAndroid && isLine && window.location.href.indexOf('openExternalBrowser=1') === -1) {
+        // Force open external browser for Android Line users
+        var url = window.location.href;
+        var separator = url.indexOf('?') > -1 ? '&' : '?';
+        window.location.href = url + separator + 'openExternalBrowser=1';
+      } else {
+        // Trigger the hidden file input
+        videoInput.click();
+      }
     });
     
     videoInput.addEventListener('change', function() {
