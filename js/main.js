@@ -161,13 +161,14 @@ document.addEventListener('DOMContentLoaded', function() {
           previewModal.style.flexDirection = 'column';
           previewModal.style.alignItems = 'center';
           previewModal.style.justifyContent = 'center';
+          // Detect OS for instruction text
+          var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          
           previewModal.innerHTML = `
             <div style="color: white; margin-bottom: 20px; text-align: center; width: 90%;">
               <h3 style="margin-bottom: 10px; font-size: 1.2rem;">影片預覽</h3>
-              <p style="font-size: 0.9rem; line-height: 1.5;">
-                <span style="color: #FFC83B; font-weight: bold;">iPhone 用戶：</span><br>
-                請點擊下方「儲存/分享」按鈕，<br>
-                並在選單中選擇 <span style="border: 1px solid #fff; padding: 2px 5px; border-radius: 4px; font-size: 0.8em;">儲存影片</span> 即可存入相簿。
+              <p id="preview_instruction_text" style="font-size: 0.9rem; line-height: 1.5;">
+                 <!-- Text will be updated dynamically -->
               </p>
             </div>
             <video id="preview_video_player" controls playsinline style="max-width: 90%; max-height: 50vh; border: 2px solid white; margin-bottom: 20px;"></video>
@@ -193,6 +194,23 @@ document.addEventListener('DOMContentLoaded', function() {
         var player = document.getElementById('preview_video_player');
         player.src = url;
         previewModal.style.display = 'flex';
+        
+        // --- Update Instruction Text based on OS ---
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        var instructionTextEl = document.getElementById('preview_instruction_text');
+        
+        if (isIOS) {
+           instructionTextEl.innerHTML = `
+             <span style="color: #FFC83B; font-weight: bold;">iPhone 用戶：</span><br>
+             請點擊下方「儲存/分享」按鈕，<br>
+             並在選單中選擇 <span style="border: 1px solid #fff; padding: 2px 5px; border-radius: 4px; font-size: 0.8em;">儲存影片</span> 即可存入相簿。
+           `;
+        } else {
+           instructionTextEl.innerHTML = `
+             影片已錄製完成！<br>
+             請點擊下方按鈕進行儲存或分享。
+           `;
+        }
         
         // --- Update Logic for Share/Save Button (Run every time file changes) ---
         var shareBtn = document.getElementById('share_video_btn');
