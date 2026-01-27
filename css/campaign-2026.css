@@ -274,7 +274,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: transparent;
   color: #3F3F3F;
   font-weight: 700;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   text-align: center;
   font-size: clamp(1.25rem, 2.34vw, 3rem);
   width: 100%;
@@ -283,7 +283,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #steps .step_title {
   font-size: clamp(1rem, 1.67vw, 2rem);
   font-weight: 450;
-  margin: 0.5rem;
+  margin: 1rem;
   line-height: 1.4;
   color: #3F3F3F;
   text-align: center;
@@ -293,7 +293,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   margin: 0 1rem;
   display: flex;
   justify-content: center;
-  height: 10rem;
+  height: 15rem;
   align-items: center;
 }
 
@@ -327,11 +327,12 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   color: #3F3F3F;
   text-align: center;
   padding: 1rem 1.5rem;
-  border-radius: 2rem;
+  border-radius: 9999px;
   font-size: clamp(1rem, 2.34vw, 2.5rem);
   font-weight: 700;
   text-decoration: none;
-  width: 120%;
+  width: 112%; /* Changed from 120% to prevent overlap */
+  max-width: 32rem; /* Allow it to be slightly wider than card if space permits, but constrained */
   align-items: center;
   justify-content: center;
   gap: 1rem;
