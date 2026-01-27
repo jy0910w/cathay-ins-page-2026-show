@@ -165,15 +165,55 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="color: white; margin-bottom: 20px; text-align: center; width: 90%;">
               <h3 style="margin-bottom: 10px; font-size: 1.2rem;">影片預覽</h3>
               <p style="font-size: 0.9rem; line-height: 1.5;">
-                <span style="color: #FFC83B; font-weight: bold;">iPhone 用戶請注意：</span><br>
-                請長按下方影片，選擇「儲存影片」或「加入照片」<br>
-                即可將影片存入手機相簿。
+                <span style="color: #FFC83B; font-weight: bold;">iPhone 用戶：</span><br>
+                請點擊下方「儲存/分享」按鈕，<br>
+                並在選單中選擇 <span style="border: 1px solid #fff; padding: 2px 5px; border-radius: 4px; font-size: 0.8em;">儲存影片</span> 即可存入相簿。
               </p>
             </div>
-            <video id="preview_video_player" controls playsinline style="max-width: 90%; max-height: 60vh; border: 2px solid white;"></video>
-            <button id="close_preview_btn" style="margin-top: 20px; padding: 10px 30px; background: white; border: none; border-radius: 20px; font-weight: bold;">關閉</button>
+            <video id="preview_video_player" controls playsinline style="max-width: 90%; max-height: 50vh; border: 2px solid white; margin-bottom: 20px;"></video>
+            
+            <div style="display: flex; gap: 15px;">
+              <button id="share_video_btn" style="padding: 10px 30px; background: #FFC83B; color: #333; border: none; border-radius: 20px; font-weight: bold; display: none;">儲存 / 分享</button>
+              <button id="close_preview_btn" style="padding: 10px 30px; background: white; border: none; border-radius: 20px; font-weight: bold;">關閉</button>
+            </div>
+            <a id="fallback_download_link" style="color: #aaa; font-size: 0.8rem; margin-top: 15px; text-decoration: underline; cursor: pointer;">無法儲存？點此下載檔案</a>
           `;
           document.body.appendChild(previewModal);
+          
+          // --- Logic for Share/Save Button ---
+          var shareBtn = document.getElementById('share_video_btn');
+          var downloadLink = document.getElementById('fallback_download_link');
+          
+          // Check if Web Share API supports files (iOS 15+, Android Chrome)
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+             shareBtn.style.display = 'block';
+             downloadLink.style.display = 'none'; // Hide fallback if share is available
+             
+             shareBtn.addEventListener('click', function() {
+               navigator.share({
+                 files: [file],
+                 title: '我的舞蹈影片',
+                 text: '參加國泰產險活動抽大獎！'
+               })
+               .then(() => console.log('Share successful'))
+               .catch((error) => console.log('Share failed', error));
+             });
+          } else {
+             // Fallback for desktop or older devices
+             downloadLink.style.display = 'block';
+          }
+          
+          // Fallback download logic
+          downloadLink.addEventListener('click', function() {
+             var a = document.createElement('a');
+             a.style.display = 'none';
+             a.href = url;
+             var timestamp = new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15);
+             a.download = 'cathay-dance-' + timestamp + '.mp4';
+             document.body.appendChild(a);
+             a.click();
+             setTimeout(function() { document.body.removeChild(a); }, 100);
+          });
           
           document.getElementById('close_preview_btn').addEventListener('click', function() {
              previewModal.style.display = 'none';
@@ -188,6 +228,17 @@ document.addEventListener('DOMContentLoaded', function() {
         var player = document.getElementById('preview_video_player');
         player.src = url;
         previewModal.style.display = 'flex';
+        
+        // Re-check share support every time (in case browser capabilities change or different file type)
+        var shareBtn = document.getElementById('share_video_btn');
+        var downloadLink = document.getElementById('fallback_download_link');
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+           shareBtn.style.display = 'block';
+           downloadLink.style.display = 'none';
+        } else {
+           shareBtn.style.display = 'none';
+           downloadLink.style.display = 'block';
+        }
       }
     });
   }
