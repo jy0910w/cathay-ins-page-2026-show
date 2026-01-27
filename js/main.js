@@ -193,9 +193,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var isLine = /Line/.test(navigator.userAgent);
     
     if (isAndroid && isLine) {
-        // Line on Android often needs 'capture' to trigger camera directly.
-        // We can try 'camcorder' for video.
-        videoInput.setAttribute('capture', 'camcorder');
+        // Line on Android is tricky. 
+        // User reports that it opens album directly instead of camera.
+        // Usually 'capture' forces camera. If 'capture' was already there (in HTML) or added by us, 
+        // and it still opens album, it might be that Line ignores it or behaves inversely.
+        // 
+        // However, standard behavior for <input type="file" accept="video/*"> WITHOUT capture 
+        // is to show a chooser (Camera / Files).
+        // 
+        // Let's try REMOVING 'capture' attribute if it exists, to let the OS chooser appear.
+        // This gives the user the choice to pick Camera.
+        if (videoInput.hasAttribute('capture')) {
+            videoInput.removeAttribute('capture');
+        }
     }
 
     // Attempt to workaround Line Android issue by resetting value on click
