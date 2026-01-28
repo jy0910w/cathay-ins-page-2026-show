@@ -433,15 +433,17 @@ body {
   white-space: nowrap;
   font-family: "Montserrat", sans-serif;
 }
+
 @media (min-width: 768px) {
   #event_2026_dance #steps .incentive_banner .ib-line-1 {
     padding-left: 1rem;
+    color: #FFC83B;
+    font-size: clamp(1rem, 2.6vw, 3rem);
   }
   #event_2026_dance #steps .incentive_banner .ib-line-4 {
     padding-left: 3rem;
   }
 }
-
 
 /* ========== Video Section ========== */
 #event_2026_dance #video {
