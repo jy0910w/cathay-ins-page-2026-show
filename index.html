@@ -779,20 +779,12 @@
                     <h3><span class="ib-line-4">就有機會獲得100點LINE POINTS！</span></h3>
                   </div>
                 </div>
-
-                <!-- Floating Camera Button - Moved to end of steps_grid to be sibling but still needs global positioning or different parent strategy -->
-                <!-- Current structure: #steps > .steps_grid > .floating_camera_btn_container -->
-                <!-- Problem: sticky is constrained by .floating_camera_btn_container height which is 100% of .steps_grid -->
-                <!-- To scroll past video to footer, the container needs to be outside #steps or cover multiple sections -->
-                
-                <!-- Moving floating button out of #steps to #event_2026_dance main container -->
               </div>
             </section>
             
             <!-- Floating Camera Button Wrapper that spans from after steps to end -->
             <div class="global_floating_camera_container">
                <button type="button" class="floating_camera_btn" id="floatingCameraBtn" aria-label="開啟相機錄影">
-                 <!-- Image hidden via CSS, used as background now -->
                  <span class="btn_text">馬上開啟相機<br>錄製舞蹈影片</span>
                </button>
                <input type="file" id="danceVideoInput" accept="video/*" capture="environment" style="display: none;">
@@ -995,7 +987,6 @@
                     } else {
                       rulesToggleImg.src = 'images/arrowdown.svg';
                       rulesToggleImg.alt = '展開全部注意事項';
-                      // Scroll back to rules title if needed
                       document.querySelector('.rules_title').scrollIntoView({behavior: 'smooth'});
                     }
                   });

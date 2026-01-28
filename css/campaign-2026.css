@@ -22,15 +22,6 @@ body {
   height: auto !important;
 }
 
-/* Hide footer during campaign */
-body #sec3, body #sec4, body #sec5 {
-  display: none;
-}
-
-body.show #sec3, body.show #sec4, body.show #sec5 {
-  display: block;
-}
-
 /* Main Campaign Container */
 #event_2026_dance {
   width: 100%;
@@ -205,7 +196,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: #ccffe1;
   padding: 2rem 2rem 2rem;
   position: relative;
-  scroll-margin-top: 72px; /* Fix anchor scroll position obscured by sticky header */
+  scroll-margin-top: 72px;
 }
 
 /* Wave decoration */
@@ -331,8 +322,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   font-size: clamp(1rem, 2.34vw, 2.5rem);
   font-weight: 700;
   text-decoration: none;
-  width: 112%; /* Changed from 120% to prevent overlap */
-  max-width: 32rem; /* Allow it to be slightly wider than card if space permits, but constrained */
+  width: 112%;
+  max-width: 32rem;
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -444,10 +435,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 @media (min-width: 768px) {
   #event_2026_dance #steps .incentive_banner .ib-line-1 {
-    padding-left: 1rem; /* 第一行往右移 */
+    padding-left: 1rem;
   }
   #event_2026_dance #steps .incentive_banner .ib-line-4 {
-    padding-left: 3rem; /* 第二行往右移 */
+    padding-left: 3rem;
   }
 }
 
@@ -462,7 +453,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #video .video_title {
-  font-size: clamp(1rem, 4.17vw, 5rem);
+  font-size: clamp(1.1rem, 4.17vw, 5rem);
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 2rem;
@@ -591,10 +582,6 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prizes_grid {
-  /* display: flex; Moved to swiper-wrapper */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* gap: 3rem; */
   max-width: 80rem;
   margin: 0 auto 3rem;
   padding: 0 1rem;
@@ -611,9 +598,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
 
   #event_2026_dance #prizes .prizes_grid .swiper-slide {
-    /* width: auto !important; Removed to allow vw widths to apply */
     margin-right: 0 !important;
-    flex-shrink: 1; /* Restore flex shrink behavior */
+    flex-shrink: 1;
   }
   
   /* Desktop Order: 2nd - 1st - 3rd */
@@ -646,25 +632,15 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prize_card.first {
-  /* order: 2; Removed, default HTML order is now 2nd, 1st, 3rd */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   width: 27.08333vw;
-  aspect-ratio: 27.08333 / 27.93666; /* Maintain aspect ratio */
+  aspect-ratio: 27.08333 / 27.93666;
   height: auto;
-}
-
-/* 2nd and 3rd prize cards - smaller than first */
-#event_2026_dance #prizes .prize_card.second {
-  /* order: 1; Removed */
-}
-
-#event_2026_dance #prizes .prize_card.third {
-  /* order: 3; Removed */
 }
 
 #event_2026_dance #prizes .prize_card:not(.first) {
   width: 23.69792vw;
-  aspect-ratio: 23.69792 / 24; /* Maintain aspect ratio */
+  aspect-ratio: 23.69792 / 24;
   height: auto;
   align-self: center;
 }
@@ -673,17 +649,16 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: transparent;
   color: #3F3F3F;
   font-weight: 700;
-  padding: 0; /* Removed padding */
+  padding: 0;
   text-align: center;
   width: 100%;
   line-height: 1.2;
-  /* Use Flexbox for centering */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 25%; /* Desktop default */
-  flex-basis: 25%; /* Desktop default */
+  min-height: 25%;
+  flex-basis: 25%;
 }
 
 #event_2026_dance #prizes .prize_badge .badge_rank {
@@ -694,7 +669,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #prizes .prize_badge .badge_count {
   display: block;
   font-size: clamp(1.5rem, 2vw, 2rem);
-  margin-top: 0; /* Remove margin */
+  margin-top: 0;
 }
 
 #event_2026_dance #prizes .prize_card_body {
@@ -734,8 +709,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #prizes .prize_card .prize_image {
   background: #FFFFFF;
-  flex: 1; /* Allow image container to grow */
-  min-height: 0; /* CRITICAL: Allows flex item to shrink below content size */
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1243,14 +1218,14 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   
   #event_2026_dance #steps .incentive_banner > div:last-child {
     position: relative;
-    top: -1.6rem; /* Move up by 20px, adjust as needed */
+    top: -2rem;
     right: -13.5vw;
     transform: none;
     text-align: center;
   }
 
   #event_2026_dance #steps .incentive_banner h3 {
-    font-size: 3.7vw;
+    font-size: 3.2vw;
     line-height: 1.6;
     white-space: normal;
     font-weight: 600;
@@ -1264,10 +1239,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   
   /* Adjust positioning for specific lines */
   #event_2026_dance #steps .incentive_banner .ib-line-1 {
-    padding-left: 1rem;
-  }
-  #event_2026_dance #steps .incentive_banner .ib-line-2 {
-    padding-left: 1rem;
+    color: #FFC83B;
+    font-size: 4.8vw;
   }
 
   /* Hide desktop-only text on mobile */
