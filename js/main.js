@@ -92,57 +92,71 @@
     });
   }
 
-  // Mobile Prizes Navigation Arrows
-  // The CSS pseudo-elements are for display, but we'll add click handlers to the container
-  // to detect clicks near the edges if the user taps the arrows
+  // Mobile Prizes Navigation with Swiper
   const prizesSection = document.getElementById('prizes');
-  const prizesGrid = document.querySelector('.prizes_grid');
   
-  if (prizesSection && prizesGrid) {
-    // Add real clickable arrows for better UX (optional overlay elements could also work)
-    // Here we'll just check click coordinates on the container relative to width
+  if (prizesSection) {
+    // Initialize Swiper for mobile
+    let swiperInstance = null;
     
-    // Create actual clickable arrow elements for better reliability than pseudo-elements
-    const leftArrow = document.createElement('div');
-    leftArrow.className = 'prize_nav_arrow prize_nav_prev';
-    // Styles moved to CSS class .prize_nav_arrow to fix path issues
-    
-    const rightArrow = document.createElement('div');
-    rightArrow.className = 'prize_nav_arrow prize_nav_next';
-    
-    // Only append if screen is small
-    if (window.innerWidth < 1024) {
-      prizesSection.appendChild(leftArrow);
-      prizesSection.appendChild(rightArrow);
-      leftArrow.style.display = 'block';
-      rightArrow.style.display = 'block';
-    }
-    
-    // Handle scrolling
-    const scrollAmount = window.innerWidth * 0.75; // Scroll by roughly one card width
-    
-    leftArrow.addEventListener('click', function() {
-      prizesGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    
-    rightArrow.addEventListener('click', function() {
-      prizesGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-    
-    // Resize handler
-    window.addEventListener('resize', function() {
-      if (window.innerWidth < 1024) {
-         if (!prizesSection.contains(leftArrow)) {
-             prizesSection.appendChild(leftArrow);
-             prizesSection.appendChild(rightArrow);
-         }
-         leftArrow.style.display = 'block';
-         rightArrow.style.display = 'block';
+    // Create arrows if they don't exist
+    // We reuse the classes defined in CSS
+    const createArrows = () => {
+       let prev = prizesSection.querySelector('.prize_nav_prev');
+       let next = prizesSection.querySelector('.prize_nav_next');
+       
+       if (!prev) {
+          prev = document.createElement('div');
+          prev.className = 'prize_nav_arrow prize_nav_prev';
+          prizesSection.appendChild(prev);
+       }
+       if (!next) {
+          next = document.createElement('div');
+          next.className = 'prize_nav_arrow prize_nav_next';
+          prizesSection.appendChild(next);
+       }
+       return { prev, next };
+    };
+
+    const initSwiper = () => {
+      const isMobile = window.innerWidth < 1024;
+      
+      if (isMobile) {
+        const arrows = createArrows();
+        // Show arrows
+        arrows.prev.style.display = 'block';
+        arrows.next.style.display = 'block';
+        
+        if (!swiperInstance && typeof Swiper !== 'undefined') {
+          swiperInstance = new Swiper('.prizes_grid', {
+            loop: true,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 16,
+            loopedSlides: 4, // Stable count for 6 real slides
+            navigation: {
+              nextEl: arrows.next,
+              prevEl: arrows.prev,
+            },
+          });
+        }
       } else {
-         leftArrow.style.display = 'none';
-         rightArrow.style.display = 'none';
+        // Desktop
+        if (swiperInstance) {
+          swiperInstance.destroy(true, true);
+          swiperInstance = null;
+        }
+        // Hide arrows
+        const prev = prizesSection.querySelector('.prize_nav_prev');
+        const next = prizesSection.querySelector('.prize_nav_next');
+        if (prev) prev.style.display = 'none';
+        if (next) next.style.display = 'none';
       }
-    });
+    };
+
+    // Run on load and resize
+    initSwiper();
+    window.addEventListener('resize', initSwiper);
   }
 
 })();

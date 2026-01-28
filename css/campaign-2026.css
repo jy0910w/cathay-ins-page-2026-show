@@ -442,6 +442,14 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   white-space: nowrap;
   font-family: "Montserrat", sans-serif;
 }
+@media (min-width: 768px) {
+  #event_2026_dance #steps .incentive_banner .ib-line-1 {
+    padding-left: 1rem; /* 第一行往右移 */
+  }
+  #event_2026_dance #steps .incentive_banner .ib-line-4 {
+    padding-left: 3rem; /* 第二行往右移 */
+  }
+}
 
 
 /* ========== Video Section ========== */
@@ -583,14 +591,43 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prizes_grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem; /* Equal spacing between cards */
+  /* display: flex; Moved to swiper-wrapper */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* gap: 3rem; */
   max-width: 80rem;
   margin: 0 auto 3rem;
   padding: 0 1rem;
 }
+
+@media (min-width: 1024px) {
+  #event_2026_dance #prizes .prizes_grid .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    transform: none !important;
+  }
+
+  #event_2026_dance #prizes .prizes_grid .swiper-slide {
+    /* width: auto !important; Removed to allow vw widths to apply */
+    margin-right: 0 !important;
+    flex-shrink: 1; /* Restore flex shrink behavior */
+  }
+  
+  /* Desktop Order: 2nd - 1st - 3rd */
+  #event_2026_dance #prizes .prize_card.second { order: 1; }
+  #event_2026_dance #prizes .prize_card.first { order: 2; }
+  #event_2026_dance #prizes .prize_card.third { order: 3; }
+  
+  /* Hide duplicated slides on desktop */
+  #event_2026_dance #prizes .prizes_grid .swiper-slide:nth-child(n+4) {
+    display: none;
+  }
+}
+
+/* Mobile Swiper Wrapper reset is in mobile media query below */
 
 #event_2026_dance #prizes .prize_card {
   background: #FFC83B;
@@ -609,6 +646,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prize_card.first {
+  /* order: 2; Removed, default HTML order is now 2nd, 1st, 3rd */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   width: 27.08333vw;
   aspect-ratio: 27.08333 / 27.93666; /* Maintain aspect ratio */
@@ -616,6 +654,14 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 /* 2nd and 3rd prize cards - smaller than first */
+#event_2026_dance #prizes .prize_card.second {
+  /* order: 1; Removed */
+}
+
+#event_2026_dance #prizes .prize_card.third {
+  /* order: 3; Removed */
+}
+
 #event_2026_dance #prizes .prize_card:not(.first) {
   width: 23.69792vw;
   aspect-ratio: 23.69792 / 24; /* Maintain aspect ratio */
@@ -1176,7 +1222,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
   /* Incentive Banner Mobile */
   #event_2026_dance #steps .incentive_banner {
-    width: 90%;
+    width: 100%;
     margin-top: 0; /* Reduced spacing from steps */
     margin-bottom: 0;
     padding: 0;
@@ -1187,7 +1233,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     grid-row: auto;
     aspect-ratio: auto;
     /* Keep background image from desktop */
-    background: url('../images/newmember.svg') no-repeat center center;
+    background: url('../images/newmember-phone.png') no-repeat center center;
     background-size: contain;
     display: flex;
     flex-direction: column;
@@ -1197,17 +1243,36 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   
   #event_2026_dance #steps .incentive_banner > div:last-child {
     position: relative;
-    top: -0.75rem; /* Move up by 20px, adjust as needed */
-    right: -2.5rem;
+    top: -1.6rem; /* Move up by 20px, adjust as needed */
+    right: -13.5vw;
     transform: none;
     text-align: center;
   }
 
   #event_2026_dance #steps .incentive_banner h3 {
-    font-size: 0.65rem;
+    font-size: 3.7vw;
     line-height: 1.6;
     white-space: normal;
     font-weight: 600;
+  }
+
+  /* Mobile Layout for Incentive Banner Text */
+  #event_2026_dance #steps .incentive_banner .ib-line-1,
+  #event_2026_dance #steps .incentive_banner .ib-line-2 {
+    display: block; /* Force new line on mobile */
+  }
+  
+  /* Adjust positioning for specific lines */
+  #event_2026_dance #steps .incentive_banner .ib-line-1 {
+    padding-left: 1rem;
+  }
+  #event_2026_dance #steps .incentive_banner .ib-line-2 {
+    padding-left: 1rem;
+  }
+
+  /* Hide desktop-only text on mobile */
+  #event_2026_dance #steps .incentive_banner .desktop-prefix {
+    display: none;
   }
   
   #event_2026_dance #steps .incentive_banner .icon {
@@ -1245,39 +1310,41 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
 
   #event_2026_dance #prizes .prizes_grid {
-    display: flex; /* Use flex instead of grid for scrolling */
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem; /* Reduce gap */
-    padding: 1rem 3.5rem 2rem; /* Add side padding for arrows */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    justify-content: flex-start; /* Align start */
+    display: block; /* Swiper container */
+    overflow: visible; /* Swiper handles scrolling */
+    padding: 1rem 0 2rem; /* Remove side padding, Swiper centeredSlides handles alignment */
     margin: 0;
     width: 100%;
     max-width: none;
-    scrollbar-width: none; /* Firefox hide scrollbar */
+  }
+  
+  #event_2026_dance #prizes .prizes_grid .swiper-wrapper {
+    gap: 0; /* Reset desktop gap */
   }
   
   #event_2026_dance #prizes .prizes_grid::-webkit-scrollbar {
     display: none; /* Chrome/Safari hide scrollbar */
   }
   
-  /* Reorder items: 1st Prize first, then others */
+  /* Reset Reorder items for mobile (1st -> 2nd -> 3rd in HTML) */
+  #event_2026_dance #prizes .prize_card.first,
+  #event_2026_dance #prizes .prize_card.second,
+  #event_2026_dance #prizes .prize_card.third {
+    order: unset; /* Reset desktop order */
+  }
+
   #event_2026_dance #prizes .prize_card.first {
-    order: -1; /* Move to first position */
-    min-width: 70vw; /* Reduced from 85vw */
-    scroll-snap-align: center;
-    width: 70vw; /* Reduced from 85vw */
+    /* order: -1; Removed for Swiper loop */
+    min-width: 70vw; /* Reverted to 70vw */
+    width: 70vw;
     height: auto;
     aspect-ratio: auto;
     align-self: stretch; /* Ensure it stretches to match tallest card */
   }
   
   #event_2026_dance #prizes .prize_card:not(.first) {
-    min-width: 70vw; /* Reduced from 85vw */
-    scroll-snap-align: center;
-    width: 70vw; /* Reduced from 85vw */
+    min-width: 70vw;
+    width: 70vw;
     height: auto;
     aspect-ratio: auto;
     align-self: stretch; /* Stretch to match height of tallest card if needed */
@@ -1307,7 +1374,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
   
   #event_2026_dance #prizes .cta_note {
-    font-size: 0.75rem; /* Smaller font size for mobile note */
+    font-size: 0.70rem; /* Smaller font size for mobile note */
   }
   #event_2026_dance #rules {
     padding: 2rem 1rem;
