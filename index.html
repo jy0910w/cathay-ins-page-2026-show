@@ -774,17 +774,25 @@
                 <div class="incentive_banner">
                   <div class="icon"></div>
                   <div>
-                    <h3><span class="ib-line-1">新會員加碼！</span><span class="ib-line-2">本次活動期間加入國泰產險</span></h3>
-                    <h3><span class="ib-line-3"><span class="desktop-prefix">新會員</span>註冊資料填入活動碼「easy_tap」</span></h3>
-                    <h3><span class="ib-line-4">就有機會獲得100點LINE POINTS！</span></h3>
+                    <h3>&nbsp;新會員加碼！本次活動期間加入國泰產險</h3>
+                    <h3>新會員註冊資料填入活動碼「easy_tap」</h3>
+                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;就有機會獲得100點LINE POINTS！</h3>
                   </div>
                 </div>
+
+                <!-- Floating Camera Button - Moved to end of steps_grid to be sibling but still needs global positioning or different parent strategy -->
+                <!-- Current structure: #steps > .steps_grid > .floating_camera_btn_container -->
+                <!-- Problem: sticky is constrained by .floating_camera_btn_container height which is 100% of .steps_grid -->
+                <!-- To scroll past video to footer, the container needs to be outside #steps or cover multiple sections -->
+                
+                <!-- Moving floating button out of #steps to #event_2026_dance main container -->
               </div>
             </section>
             
             <!-- Floating Camera Button Wrapper that spans from after steps to end -->
             <div class="global_floating_camera_container">
                <button type="button" class="floating_camera_btn" id="floatingCameraBtn" aria-label="開啟相機錄影">
+                 <!-- Image hidden via CSS, used as background now -->
                  <span class="btn_text">馬上開啟相機<br>錄製舞蹈影片</span>
                </button>
                <input type="file" id="danceVideoInput" accept="video/*" capture="environment" style="display: none;">
@@ -809,90 +817,45 @@
               <h2 class="prizes_title">至國泰產險FB指定貼文留言</h2>
               <p class="prizes_subtitle">秀出你的 <span class="green"> \ 簡單點舞蹈影片 / </span>就有機會獲得</p>
               
-              <div class="prizes_grid swiper-container">
-                <div class="swiper-wrapper">
-                  <!-- 1st Prize -->
-                  <div class="prize_card first swiper-slide">
-                    <div class="prize_badge">
-                      <span class="badge_rank">頭獎</span>
-                      <span class="badge_count">共1名</span>
-                    </div>
-                    <div class="prize_card_body">
-                      <h4 class="prize_title">Nintendo Switch 2</h4>
-                      <div class="prize_image">
-                        <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
-                      </div>
+              <div class="prizes_grid">
+                <!-- 2nd Prize -->
+                <div class="prize_card second">
+                  <div class="prize_badge">
+                    <span class="badge_rank">2獎</span>
+                    <span class="badge_count">共2名</span>
+                  </div>
+                  <div class="prize_card_body">
+                    <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
+                    <div class="prize_image">
+                      <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
                     </div>
                   </div>
-
-                  <!-- 2nd Prize -->
-                  <div class="prize_card second swiper-slide">
-                    <div class="prize_badge">
-                      <span class="badge_rank">2獎</span>
-                      <span class="badge_count">共2名</span>
-                    </div>
-                    <div class="prize_card_body">
-                      <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
-                      <div class="prize_image">
-                        <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
-                      </div>
+                </div>
+                
+                <!-- 1st Prize -->
+                <div class="prize_card first">
+                  <div class="prize_badge">
+                    <span class="badge_rank">頭獎</span>
+                    <span class="badge_count">共1名</span>
+                  </div>
+                  <div class="prize_card_body">
+                    <h4 class="prize_title">Nintendo Switch 2</h4>
+                    <div class="prize_image">
+                      <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
                     </div>
                   </div>
-                  
-                  <!-- 3rd Prize -->
-                  <div class="prize_card third swiper-slide">
-                    <div class="prize_badge">
-                      <span class="badge_rank">3獎</span>
-                      <span class="badge_count">共5名</span>
-                    </div>
-                    <div class="prize_card_body">
-                      <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
-                      <div class="prize_image">
-                        <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
-                      </div>
-                    </div>
+                </div>
+                
+                <!-- 3rd Prize -->
+                <div class="prize_card third">
+                  <div class="prize_badge">
+                    <span class="badge_rank">3獎</span>
+                    <span class="badge_count">共5名</span>
                   </div>
-
-                  <!-- Duplicated Slides for Better Loop -->
-                  <!-- 1st Prize (Copy) -->
-                  <div class="prize_card first swiper-slide">
-                    <div class="prize_badge">
-                      <span class="badge_rank">頭獎</span>
-                      <span class="badge_count">共1名</span>
-                    </div>
-                    <div class="prize_card_body">
-                      <h4 class="prize_title">Nintendo Switch 2</h4>
-                      <div class="prize_image">
-                        <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 2nd Prize (Copy) -->
-                  <div class="prize_card second swiper-slide">
-                    <div class="prize_badge">
-                      <span class="badge_rank">2獎</span>
-                      <span class="badge_count">共2名</span>
-                    </div>
-                    <div class="prize_card_body">
-                      <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
-                      <div class="prize_image">
-                        <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- 3rd Prize (Copy) -->
-                  <div class="prize_card third swiper-slide">
-                    <div class="prize_badge">
-                      <span class="badge_rank">3獎</span>
-                      <span class="badge_count">共5名</span>
-                    </div>
-                    <div class="prize_card_body">
-                      <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
-                      <div class="prize_image">
-                        <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
-                      </div>
+                  <div class="prize_card_body">
+                    <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
+                    <div class="prize_image">
+                      <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
                     </div>
                   </div>
                 </div>
@@ -987,6 +950,7 @@
                     } else {
                       rulesToggleImg.src = 'images/arrowdown.svg';
                       rulesToggleImg.alt = '展開全部注意事項';
+                      // Scroll back to rules title if needed
                       document.querySelector('.rules_title').scrollIntoView({behavior: 'smooth'});
                     }
                   });
