@@ -22,15 +22,6 @@ body {
   height: auto !important;
 }
 
-/* Hide footer during campaign */
-body #sec3, body #sec4, body #sec5 {
-  display: none;
-}
-
-body.show #sec3, body.show #sec4, body.show #sec5 {
-  display: block;
-}
-
 /* Main Campaign Container */
 #event_2026_dance {
   width: 100%;
@@ -38,6 +29,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   font-family: "Noto Sans TC", "Montserrat", sans-serif;
   overflow: visible;
   background: white;
+}
+
+.mobile_br {
+  display: none;
 }
 
 
@@ -74,13 +69,23 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   z-index: 10;
 }
 
+#event_2026_dance #hero .hero_chars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* Characters */
 #event_2026_dance #hero .char_left {
   position: absolute;
   bottom: -3rem;
-  left: 5%;
-  width: 23%;
-  max-width: 480px;
+  left: 4.8%;
+  width: 24.47%;
+  max-width: 470px;
   height: auto;
   z-index: 5;
   transform: translateX(-10%);
@@ -88,10 +93,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #hero .char_right {
   position: absolute;
-  bottom: -1.5rem;
+  bottom: -1rem;
   right: 6%;
-  width: 19%;
-  max-width: 380px;
+  width: 19.27%;
+  max-width: 370px;
   height: auto;
   z-index: 5;
   transform: translateX(10%);
@@ -101,14 +106,19 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   margin-bottom: 2rem;
 }
 
+#event_2026_dance #hero .hero_title .slash {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
 #event_2026_dance #hero .hero_title .line1 {
-  font-size: clamp(1.5rem, 4.28vw, 5.5rem);
+  font-size: clamp(1rem, 3.8vw, 4.8rem);
   font-weight: 700;
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3em;
 }
 
 #event_2026_dance #hero .hero_title .line1 .yellow {
@@ -120,8 +130,13 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #hero .hero_title .line2 {
-  font-size: clamp(2rem, 5.83vw, 7.5rem);
+  font-size: clamp(1rem, 4.3vw, 5.2rem);
   font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  white-space: nowrap;
 }
 
 #event_2026_dance #hero .hero_title .line2 .yellow {
@@ -132,19 +147,25 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   color: #3F3F3F;
 }
 
+#event_2026_dance #hero .hero_title .line2 .dance-text {
+  margin-left: -0.4em;
+}
+
 #event_2026_dance #hero .hero_subtitle {
-  font-size: clamp(1.5rem, 4.17vw, 5rem);
+  font-size: clamp(1.5rem, 3.6vw, 4.5rem);
   font-weight: 800;
   color: #3F3F3F;
-  margin-top: 7rem;
+  /* Base 1920px: ~154px (8.02vw). Scales down smoothly. */
+  margin-top: 8.02vw;
   margin-bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(1vw);
 }
 
 #event_2026_dance #hero .hero_subtitle .big_num {
-  font-size: clamp(2.5rem, 6.15vw, 8rem);
+  font-size: clamp(2.5rem, 6vw, 7.2rem);
   line-height: 1;
   margin: 0 0.25rem;
   transform: translateY(-2px);
@@ -153,18 +174,20 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #hero .hero_cta {
   display: flex;
   justify-content: center;
-  gap: 3.25rem;
+  gap: 2.708vw;
   margin-bottom: 3rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   max-width: clamp(500px, 48vw, 1000px);
   margin-left: auto;
   margin-right: auto;
 }
 
 #event_2026_dance #hero .hero_cta .btn {
-  flex: 1;
+  flex: 0 0 auto;
+  width: 22.396vw;
+  height: 5.469vw;
   min-width: 100px;
-  font-size: clamp(1rem, 2.34vw, 2.5rem);
+  font-size: clamp(1rem, 2.34vw, 2.8125rem);
   font-weight: 700;
   border-radius: 9999px;
   text-decoration: none;
@@ -175,9 +198,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 1rem 2rem;
+  padding: 0;
   gap: 1rem;
-  height: 4rem;
+  /* height: auto; removed */
   background: #FFC83B;
   color: #3F3F3F;
   text-align: center;
@@ -203,9 +226,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #steps {
   width: 100%;
   background: #ccffe1;
-  padding: 2rem 2rem 2rem;
+  padding: 2rem 0rem 2rem;
   position: relative;
-  scroll-margin-top: 72px; /* Fix anchor scroll position obscured by sticky header */
+  scroll-margin-top: 72px;
 }
 
 /* Wave decoration */
@@ -215,9 +238,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 2.86vw;
   background: #ccffe1;
-  clip-path: polygon(0 100%, 45% 100%, 50% 0, 55% 100%, 100% 100%);
+  clip-path: polygon(0 100%, 43% 100%, 50% 0, 57% 100%, 100% 100%);
   transform: translateY(-100%);
   z-index: 21;
 }
@@ -232,10 +255,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #steps .steps_grid {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 27.5rem) minmax(0, 27.5rem) minmax(0, 27.5rem) 1fr;
+  grid-template-columns: 1fr 23.4375vw 23.4375vw 23.4375vw 1fr;
   grid-template-rows: auto auto auto;
   gap: 0;
-  column-gap: 5rem;
+  column-gap: 5.5vw;
   max-width: none;
   margin: 0 auto;
   position: relative;
@@ -255,7 +278,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   padding: 0 1px 1px 1px;
   position: relative;
   z-index: 2;
-  height: 100%;
+  height: 25.26vw;
   overflow: visible;
 }
 
@@ -293,8 +316,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   margin: 0 1rem;
   display: flex;
   justify-content: center;
-  height: 15rem;
-  align-items: center;
+  height: 12.5vw;
+  align-items: flex-end;
+  margin-top: auto;
 }
 
 #event_2026_dance #steps .step_image img {
@@ -302,6 +326,17 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   height: auto;
   max-width: 100%;
   max-height: 100%;
+}
+
+#event_2026_dance #steps .step1_main .step_image img,
+#event_2026_dance #steps .step2_main .step_image img {
+  transform: scale(1.15);
+  transform-origin: bottom center;
+}
+
+#event_2026_dance #steps .step3_main .step_image {
+  align-items: center;
+  margin-top: 0;
 }
 
 #event_2026_dance #steps .step3_main .step_image img {
@@ -326,24 +361,25 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: #FFC83B;
   color: #3F3F3F;
   text-align: center;
-  padding: 1rem 1.5rem;
+  padding: 0;
   border-radius: 9999px;
-  font-size: clamp(1rem, 2.34vw, 2.5rem);
+  font-size: clamp(1rem, 2.34vw, 2.8125rem);
   font-weight: 700;
   text-decoration: none;
-  width: 112%; /* Changed from 120% to prevent overlap */
-  max-width: 32rem; /* Allow it to be slightly wider than card if space permits, but constrained */
+  width: 27.344vw;
+  height: 5.469vw;
+  max-width: none;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   position: relative;
+  flex: 0 0 auto;
 }
 
 #event_2026_dance #steps .step_btn .arrow {
   display: inline-block;
-  width: 0.75rem;
-  height: 2rem;
+  width: 0.4em;
+  height: 1em;
   background: url('../images/icon-arrow--line.svg') no-repeat center center;
   background-size: contain;
 }
@@ -370,7 +406,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #steps .step2_main::after {
   content: '';
   position: absolute;
-  left: calc(100% + 2.5rem);
+  left: calc(100% + 2.75vw);
   top: 50%;
   transform: translate(-50%, -50%);
   width: 2rem;
@@ -410,7 +446,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   padding: 0;
   display: block;
   width: 73%;
-  max-width: none;
+  max-width: 1402px;
   aspect-ratio: 14/5;
   min-height: auto;
   margin-left: auto;
@@ -443,6 +479,11 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   font-family: "Montserrat", sans-serif;
 }
 
+@media (min-width: 768px) {
+  #event_2026_dance #steps .incentive_banner .ib-line-3 {
+    padding-left: 3rem;
+  }
+}
 
 /* ========== Video Section ========== */
 #event_2026_dance #video {
@@ -454,37 +495,32 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #video .video_title {
-  font-size: clamp(1rem, 4.17vw, 5rem);
+  font-size: clamp(1.1rem, 4.17vw, 5rem);
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 2rem;
   color: #3F3F3F;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.83333vw;
+  display: block;
+  line-height: 1.4;
 }
 
 #event_2026_dance #video .video_title::before {
   content: '';
-  display: block;
-  width: 3.64vw;
-  height: 5.625vw;
-  background: url('../images/blacklightingL.svg') no-repeat center center;
-  background-size: contain;
+  display: none;
 }
 
 #event_2026_dance #video .video_title::after {
   content: '';
-  display: block;
-  width: 3.64vw;
-  height: 5.625vw;
-  background: url('../images/blacklightingR.svg') no-repeat center center;
-  background-size: contain;
+  display: none;
 }
 
 #event_2026_dance #video .video_title span {
   color: #FFC83B;
+}
+
+#event_2026_dance #video .video_title .dance-name {
+  margin-right: -0.3em;
+  color: #3F3F3F;
 }
 
 #event_2026_dance #video .video_container {
@@ -559,7 +595,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   width: 100%;
   background: white url('../images/section3.svg') no-repeat center top;
   background-size: 100% auto;
-  padding: 4rem 1rem;
+  padding: 6vw 1rem;
 }
 
 #event_2026_dance #prizes .prizes_title {
@@ -572,7 +608,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #prizes .prizes_subtitle {
   font-size: clamp(1rem, 4.17vw, 5rem);
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
   margin-bottom: 3rem;
   color: #3F3F3F;
@@ -583,21 +619,51 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prizes_grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem; /* Equal spacing between cards */
-  max-width: 80rem;
+  max-width: none;
   margin: 0 auto 3rem;
   padding: 0 1rem;
 }
 
+@media (min-width: 1024px) {
+  #event_2026_dance #prizes .prizes_grid .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    transform: none !important;
+  }
+
+  #event_2026_dance #prizes .prizes_grid .swiper-slide {
+    margin-right: 0 !important;
+    flex-shrink: 1;
+  }
+  
+  /* Desktop Order: 2nd - 1st - 3rd */
+  #event_2026_dance #prizes .prize_card.second { order: 1; }
+  #event_2026_dance #prizes .prize_card.first { order: 2; }
+  #event_2026_dance #prizes .prize_card.third { order: 3; }
+  
+  /* Hide duplicated slides on desktop */
+  #event_2026_dance #prizes .prizes_grid .swiper-slide:nth-child(n+4) {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1919px) {
+  #event_2026_dance #steps .step1_main .step_image img,
+  #event_2026_dance #steps .step2_main .step_image img  {
+    transform: scale(1.15) translateY(10%);
+  }
+}
+
+/* Mobile Swiper Wrapper reset is in mobile media query below */
+
 #event_2026_dance #prizes .prize_card {
   background: #FFC83B;
   padding: 0 1px 1px 1px;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   text-align: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   position: relative;
   display: flex;
@@ -609,16 +675,14 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prize_card.first {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  width: 27.08333vw;
-  aspect-ratio: 27.08333 / 27.93666; /* Maintain aspect ratio */
+  width: 26.822917vw;
+  aspect-ratio: 26.822917 / 27.864583;
   height: auto;
 }
 
-/* 2nd and 3rd prize cards - smaller than first */
 #event_2026_dance #prizes .prize_card:not(.first) {
-  width: 23.69792vw;
-  aspect-ratio: 23.69792 / 24; /* Maintain aspect ratio */
+  width: 23.4375vw;
+  aspect-ratio: 23.4375 / 24.47917;
   height: auto;
   align-self: center;
 }
@@ -627,33 +691,32 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   background: transparent;
   color: #3F3F3F;
   font-weight: 700;
-  padding: 0; /* Removed padding */
+  padding: 2rem 0;
   text-align: center;
   width: 100%;
   line-height: 1.2;
-  /* Use Flexbox for centering */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 25%; /* Desktop default */
-  flex-basis: 25%; /* Desktop default */
+  min-height: 32%;
+  flex-basis: 32%;
 }
 
 #event_2026_dance #prizes .prize_badge .badge_rank {
   display: block;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3.2vw, 3.875rem);
 }
 
 #event_2026_dance #prizes .prize_badge .badge_count {
   display: block;
-  font-size: clamp(1.5rem, 2vw, 2rem);
-  margin-top: 0; /* Remove margin */
+  font-size: clamp(1.5rem, 2.1vw, 2.5rem);
+  margin-top: 0;
 }
 
 #event_2026_dance #prizes .prize_card_body {
   background: white;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   overflow: hidden;
   flex: 1;
   display: flex;
@@ -677,19 +740,20 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 #event_2026_dance #prizes .prize_card .prize_title {
   font-size: clamp(1rem, 1.67vw, 2rem) !important;
   font-weight: 700;
-  margin: 0.25rem 0;
+  margin: 0.75rem 0 0.5rem;
   color: #3F3F3F;
   font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
 }
 
 #event_2026_dance #prizes .prize_card.first .prize_title {
-  margin: 0.75rem 0;
+  margin: 1.25rem 0 0.75rem;
 }
 
 #event_2026_dance #prizes .prize_card .prize_image {
   background: #FFFFFF;
-  flex: 1; /* Allow image container to grow */
-  min-height: 0; /* CRITICAL: Allows flex item to shrink below content size */
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -699,9 +763,16 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .prize_card .prize_image img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 85%;
+  max-height: 85%;
   object-fit: contain; /* Ensures image maintains aspect ratio within the container */
+}
+
+/* Align 2nd prize image to bottom */
+#event_2026_dance #prizes .prize_card.second .prize_image {
+  align-items: flex-end;
 }
 
 #event_2026_dance #prizes .prizes_cta {
@@ -717,11 +788,14 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #prizes .prizes_cta .btn {
   display: flex;
-  padding: 1rem 2rem;
-  width: 100%; /* Make button fill its container */
-  font-size: clamp(1rem, 1.5rem, 2rem);
+  padding: 0;
+  width: 28.3854vw;
+  height: 5.46875vw;
+  max-width: 545px;
+  max-height: 105px;
+  font-size: clamp(1rem, 2.4vw, 2.8125rem);
   font-weight: 700;
-  border-radius: 2rem;
+  border-radius: 999px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -731,14 +805,13 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  height: 4rem;
   box-sizing: border-box;
 }
 
 #event_2026_dance #prizes .prizes_cta .btn .arrow {
   display: inline-block;
-  width: 6px;
-  height: 10px;
+  width: 0.4em;
+  height: 0.7em;
   background: url('../images/icon-arrow--line.svg') no-repeat center center;
   background-size: contain;
 }
@@ -756,7 +829,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #prizes .cta_note {
-  font-size: clamp(0.75rem, 1rem, 1.25rem);
+  font-size: clamp(0.75rem, 1.35417vw, 1.625rem);
   color: #6b7280;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -786,7 +859,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   border: 1px solid #a5a6ad;
   border-radius: 1.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  font-size: clamp(0.875rem, 1.61vw, 1.25rem);
+  font-size: clamp(0.875rem, 1.61vw, 1.9375rem);
   color: #333;
   line-height: 1.75;
   max-height: 1080px;
@@ -810,7 +883,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #rules .rules_content.expanded {
-  max-height: 5000px;
+  max-height: 30000px;
 }
 
 #event_2026_dance #rules .rules_content::after {
@@ -838,9 +911,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 #event_2026_dance #rules .rules_list > li {
-  margin-bottom: 1.5rem;
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
 }
 
 #event_2026_dance #rules .rules_list > li::before {
@@ -860,19 +932,20 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 #event_2026_dance #rules .rules_sublist {
   list-style: none;
-  padding-left: 0.5rem;
+  padding-left: 0;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  margin-left: -1.5rem;
 }
 
 #event_2026_dance #rules .rules_sublist li {
   margin-bottom: 0.25rem;
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
 }
 
 #event_2026_dance #rules .rules_sublist li::before {
-  content: '◎';
+  content: '■';
   position: absolute;
   left: 0;
   top: 0;
@@ -884,11 +957,12 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   padding-left: 0;
   margin-top: 0.5rem;
   counter-reset: rules-counter;
+  margin-left: -1.5rem;
 }
 
 #event_2026_dance #rules .rules_ordered_list > li {
   margin-bottom: 0.75rem;
-  padding-left: 3rem;
+  padding-left: 1.5rem;
   position: relative;
 }
 
@@ -899,6 +973,10 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   left: 0;
   top: 0;
   font-weight: normal;
+}
+
+#event_2026_dance #rules .rules_ordered_list > li:nth-child(n+10)::before {
+  left: -0.6em;
 }
 
 #event_2026_dance #rules .rules_note {
@@ -1002,9 +1080,62 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 }
 
 
-/* ========== Floating Camera Button (Desktop Hidden) ========== */
+/* ========== Floating Camera Button (Desktop Visible) ========== */
 .global_floating_camera_container {
+  display: block;
+  position: fixed;
+  bottom: 5vh;
+  right: 2rem;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.global_floating_camera_container.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating_camera_btn {
+  width: 300px;
+  height: 420px;
+  background: url('../images/buttom2.svg') no-repeat center center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.floating_camera_btn:hover {
+  transform: scale(1.05);
+}
+
+.floating_camera_btn .btn_text.mobile_text {
   display: none;
+}
+
+.floating_camera_btn .btn_text.desktop_text {
+  display: block;
+  position: absolute;
+  top: 12%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  line-height: 1.3;
+  font-size: 1.125rem;
+}
+
+.floating_camera_btn .btn_text.desktop_text .text_lg {
+  font-size: 1.5rem;
+  display: block;
+  color: white;
 }
 
 
@@ -1014,55 +1145,98 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
 @media (max-width: 1023px) {
   
+  .mobile_br {
+    display: inline;
+  }
+
   /* ========== Hero Section Mobile ========== */
   #event_2026_dance #hero {
-    padding: 4rem 1rem 10rem;
+    padding: 2rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #event_2026_dance #hero::before {
+    background-image: url('../images/phonesec1_m.png');
+    background-position: center -10vw;
+    background-size: 100% auto;
+    height: 100%;
+  }
+
+  #event_2026_dance #hero .hero_chars {
+    position: relative;
+    width: 100%;
+    height: auto;
+    order: -1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    pointer-events: auto;
   }
 
   #event_2026_dance #hero .hero_cta {
     max-width: 100%;
     padding: 0 0.5rem;
     gap: 0.75rem;
+    margin-bottom: 0.8rem;
   }
   
   #event_2026_dance #hero .hero_cta .btn {
-    flex: 1;
-    width: auto;
+    flex: 0 1 auto; /* Allow shrink to prevent overflow */
+    width: 44.47vw; /* 455px at 1023px width */
+    height: 11.73vw; /* 120px at 1023px width */
     max-width: none;
-    font-size: 1.125rem;
-    height: 3.5rem;
-    padding: 0.5rem;
+    font-size: clamp(1rem, 4.583vw, 2.5rem); /* Adjust font size to scale */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
   }
   
   #event_2026_dance #hero .hero_cta .btn::after {
-    height: 1.5rem;
+    height: 0.6em;
+    width: 0.6em;
   }
 
   #event_2026_dance #hero .char_left {
-    width: 40%;
-    left: 5%;
-    bottom: -4rem;
+    content: url('../images/phoneguy_m.png');
+    position: static;
+    width: 42.59vw; /* 460px / 1080px */
+    max-width: none;
+    height: auto;
+    transform: translateY(-2vw);
   }
   
   #event_2026_dance #hero .char_right {
-    width: 35%;
-    right: 5%;
-    bottom: -3rem;
+    content: url('../images/phonegirl_m.png');
+    position: static;
+    width: 38.89vw; /* 420px / 1080px */
+    max-width: none;
+    height: auto;
+    transform: translateY(-4vw);
   }
   
   #event_2026_dance #hero .hero_title .line1 {
-    font-size: 8vw;
+    font-size: 8.33vw;
   }
   
   #event_2026_dance #hero .hero_title .line2 {
-    font-size: 10vw;
+    font-size: 7.87vw;
   }
 
   #event_2026_dance #hero .hero_subtitle {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    font-size: 8.194vw; /* 88.5px / 1080px */
+    margin-top: 0;
+    margin-bottom: 1.5rem;
     position: relative;
     z-index: 20;
+    transform: none;
+  }
+
+  #event_2026_dance #hero .hero_subtitle .big_num {
+    font-size: 11.944vw; /* 129px / 1080px */
   }
 
   
@@ -1073,7 +1247,8 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
   
   #event_2026_dance #steps::before {
-    height: 30px;
+    height: 5vw;
+    clip-path: polygon(0 100%, 35% 100%, 50% 0, 65% 100%, 100% 100%);
   }
   
   #event_2026_dance #steps .steps_title {
@@ -1085,9 +1260,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
   
   #event_2026_dance #steps .steps_grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
-    padding: 3rem 1.5rem 0;
+    padding: 3rem 0 0;
   }
   
   /* Green background for cards area */
@@ -1099,7 +1274,7 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
-    height: 90%;
+    height: 78%;
     background: #ccffe1;
     z-index: 0;
   }
@@ -1123,15 +1298,18 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     margin-bottom: 0;
     grid-column: auto;
     grid-row: auto;
+    height: auto;
+    max-width: 700px;
+    width: 64.8vw;
   }
 
   #event_2026_dance #steps .step_badge {
-    font-size: 1.5rem;
+    font-size: 6.6vw;
     padding: 1.25rem 0;
   }
 
   #event_2026_dance #steps .step_title {
-    font-size: 1.125rem;
+    font-size: 4.63vw;
     margin: 1.25rem 1.5rem;
     line-height: 1.6;
   }
@@ -1139,6 +1317,41 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   #event_2026_dance #steps .step_image {
     height: 12rem;
     margin: 0 1.5rem;
+  }
+
+  /* Reset image scaling for mobile */
+  #event_2026_dance #steps .step1_main .step_image {
+    height: 39.35vw; /* 425px / 1080px */
+  }
+
+  #event_2026_dance #steps .step1_main .step_image img {
+    transform: none;
+    width: 22.22vw; /* 240px / 1080px */
+    height: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  #event_2026_dance #steps .step2_main .step_image {
+    height: 39.35vw; /* 425px / 1080px */
+  }
+
+  #event_2026_dance #steps .step2_main .step_image img {
+    transform: none;
+    width: 38.89vw; /* 420px / 1080px */
+    height: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  #event_2026_dance #steps .step3_main .step_image {
+    height: 37.03vw; /* 400px * 85% / 1080px */
+  }
+
+  #event_2026_dance #steps .step3_main .step_image img {
+    transform: none;
+    width: 55.55vw; /* 600px * 85% / 1080px */
+    height: 100%;
   }
 
   #event_2026_dance #steps .step_footer {
@@ -1149,15 +1362,16 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
 
   #event_2026_dance #steps .step_btn {
-    width: 90%;
-    max-width: 320px;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    border-radius: 3rem;
+    width: 77.81vw; /* 796px / 1023px */
+    height: 16.62vw; /* 170px / 1023px */
+    max-width: 796px;
+    padding: 0;
+    font-size: clamp(1rem, 6.4vw, 4.375rem);
+    border-radius: 9999px;
   }
 
   #event_2026_dance #steps .step_note {
-    font-size: 0.875rem;
+    font-size: 3.75vw;
     margin-top: 1rem;
     padding: 0 1rem;
     line-height: 1.5;
@@ -1176,18 +1390,18 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
   /* Incentive Banner Mobile */
   #event_2026_dance #steps .incentive_banner {
-    width: 90%;
-    margin-top: 0; /* Reduced spacing from steps */
+    width: 95.37vw; /* 1030px / 1080px */
+    margin-top: 0;
     margin-bottom: 0;
     padding: 0;
-    min-height: 200px;
     position: relative;
     z-index: 10;
     grid-column: auto;
     grid-row: auto;
-    aspect-ratio: auto;
+    aspect-ratio: 1030/950;
+    justify-self: center;
     /* Keep background image from desktop */
-    background: url('../images/newmember.svg') no-repeat center center;
+    background: url('../images/pointwoman_m.png') no-repeat center center;
     background-size: contain;
     display: flex;
     flex-direction: column;
@@ -1196,18 +1410,25 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
   
   #event_2026_dance #steps .incentive_banner > div:last-child {
-    position: relative;
-    top: -0.75rem; /* Move up by 20px, adjust as needed */
-    right: -2.5rem;
+    position: absolute;
+    top: auto;
+    bottom: 7%;
+    left: 9%;
+    right: auto;
     transform: none;
     text-align: center;
+    width: auto;
   }
 
   #event_2026_dance #steps .incentive_banner h3 {
-    font-size: 0.65rem;
-    line-height: 1.6;
+    font-size: 4.167vw;
+    line-height: 1.4;
     white-space: normal;
     font-weight: 600;
+  }
+
+  #event_2026_dance #steps .incentive_banner .ib-line-3 {
+    padding-left: 0;
   }
   
   #event_2026_dance #steps .incentive_banner .icon {
@@ -1215,7 +1436,6 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     width: 60px;
     height: 60px;
   }
-
   
   /* ========== Video Section Mobile ========== */
   #event_2026_dance #video {
@@ -1224,8 +1444,13 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   }
 
   #event_2026_dance #video .video_container {
-    width: 100%;
+    width: 100vw;
+    margin-left: -1rem;
     padding-bottom: 56.25%;
+  }
+
+  #event_2026_dance #video .video_title {
+    font-size: 6.8vw;
   }
 
   
@@ -1244,40 +1469,51 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     display: none;
   }
 
+  #event_2026_dance #prizes .prizes_title {
+    font-size: 10.37vw;
+    margin-bottom: 6.5vw;
+  }
+
+  #event_2026_dance #prizes .prizes_subtitle {
+    font-size: 7.4vw;
+  }
+
   #event_2026_dance #prizes .prizes_grid {
-    display: flex; /* Use flex instead of grid for scrolling */
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem; /* Reduce gap */
-    padding: 1rem 3.5rem 2rem; /* Add side padding for arrows */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    justify-content: flex-start; /* Align start */
+    display: block; /* Swiper container */
+    overflow: visible; /* Swiper handles scrolling */
+    padding: 1rem 0 2rem; /* Remove side padding, Swiper centeredSlides handles alignment */
     margin: 0;
     width: 100%;
     max-width: none;
-    scrollbar-width: none; /* Firefox hide scrollbar */
+  }
+  
+  #event_2026_dance #prizes .prizes_grid .swiper-wrapper {
+    gap: 0; /* Reset desktop gap */
   }
   
   #event_2026_dance #prizes .prizes_grid::-webkit-scrollbar {
     display: none; /* Chrome/Safari hide scrollbar */
   }
   
-  /* Reorder items: 1st Prize first, then others */
+  /* Reset Reorder items for mobile (1st -> 2nd -> 3rd in HTML) */
+  #event_2026_dance #prizes .prize_card.first,
+  #event_2026_dance #prizes .prize_card.second,
+  #event_2026_dance #prizes .prize_card.third {
+    order: unset; /* Reset desktop order */
+  }
+
   #event_2026_dance #prizes .prize_card.first {
-    order: -1; /* Move to first position */
-    min-width: 70vw; /* Reduced from 85vw */
-    scroll-snap-align: center;
-    width: 70vw; /* Reduced from 85vw */
+    /* order: -1; Removed for Swiper loop */
+    width: 63.91vw; /* 654/1023 * 100% */
+    max-width: 654px;
     height: auto;
-    aspect-ratio: auto;
+    aspect-ratio: auto; /* Allow auto height based on content or reset if needed */
     align-self: stretch; /* Ensure it stretches to match tallest card */
   }
   
   #event_2026_dance #prizes .prize_card:not(.first) {
-    min-width: 70vw; /* Reduced from 85vw */
-    scroll-snap-align: center;
-    width: 70vw; /* Reduced from 85vw */
+    width: 63.91vw; /* 654/1023 * 100% */
+    max-width: 654px;
     height: auto;
     aspect-ratio: auto;
     align-self: stretch; /* Stretch to match height of tallest card if needed */
@@ -1288,26 +1524,30 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   #event_2026_dance #prizes .prizes_cta {
     padding: 0 1rem;
     width: auto;
-    flex-wrap: nowrap; /* Prevent wrapping to keep in one row */
-    gap: 0.75rem; /* Reduce gap slightly */
+    flex-direction: column; /* Stack vertically */
+    gap: 1rem;
+    max-width: none;
   }
 
-  /* Force groups to be horizontal and equal width */
+  /* Force groups to be wide */
   #event_2026_dance #prizes .prizes_cta_group {
-    flex: 1;
-    width: auto;
+    width: 100%;
+    flex: auto;
   }
   
   /* Adjust button for mobile */
   #event_2026_dance #prizes .prizes_cta .btn {
-    padding: 0.5rem; /* Reduce padding */
-    height: 3.5rem; /* Match hero button height */
-    font-size: 1rem; /* Adjust font size */
-    width: 100%;
+    padding: 0;
+    width: 78.7vw; /* 850px / 1080px */
+    height: 15.74vw; /* 170px / 1080px */
+    max-width: none; /* Reset desktop max-width */
+    max-height: none; /* Reset desktop max-height */
+    font-size: clamp(1rem, 6.4vw, 4.375rem);
+    border-radius: 999px;
   }
   
   #event_2026_dance #prizes .cta_note {
-    font-size: 0.75rem; /* Smaller font size for mobile note */
+    font-size: 3.75vw;
   }
   #event_2026_dance #rules {
     padding: 2rem 1rem;
@@ -1330,8 +1570,9 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
   .global_floating_camera_container {
     display: block;
     position: fixed;
-    top: 20vh;
-    right: 10px;
+    top: auto;
+    bottom: 10vh;
+    right: 0;
     z-index: 999;
     opacity: 0;
     transform: translateY(20px);
@@ -1369,7 +1610,12 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     display: none;
   }
 
-  .floating_camera_btn .btn_text {
+  .floating_camera_btn .btn_text.desktop_text {
+    display: none;
+  }
+
+  .floating_camera_btn .btn_text.mobile_text {
+    display: block;
     position: absolute;
     top: 35%;
     left: 50%;
@@ -1383,34 +1629,67 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
     width: 80%;
   }
 
+  #event_2026_dance #prizes .prize_badge .badge_rank {
+    font-size: 7.685vw;
+  }
+
+  #event_2026_dance #prizes .prize_badge .badge_count {
+    font-size: 5vw;
+  }
+
   /* Unify Prize Card Padding and Spacing on Mobile */
   #event_2026_dance #prizes .prize_card.first .prize_card_body,
   #event_2026_dance #prizes .prize_card:not(.first) .prize_card_body {
     padding: 0.75rem 1rem; /* Reduce vertical padding significantly */
   }
+
+  /* Remove bottom padding for 2nd prize to align image to bottom */
+  #event_2026_dance #prizes .prize_card.second .prize_card_body {
+    padding-bottom: 0;
+  }
   
   #event_2026_dance #prizes .prize_card.first .prize_title,
   #event_2026_dance #prizes .prize_card:not(.first) .prize_title {
     margin-bottom: 0.25rem; /* Minimize margin */
-    font-size: 1rem !important; /* Slightly reduce font size if needed */
+    font-size: 3.98vw !important;
   }
   
   /* Reduce image container height */
   #event_2026_dance #prizes .prize_card .prize_image {
     padding: 0.25rem; /* Further reduce padding around image */
-    flex: 0 0 auto; /* Stop it from growing too much */
-    height: 8rem; /* Set a specific, smaller height for mobile images */
+    flex: 1 1 auto; /* Allow growing to fill empty space */
+    min-height: 8rem; /* Set a specific, smaller height for mobile images */
+    height: auto;
+  }
+
+  /* Adjust image size on mobile */
+  #event_2026_dance #prizes .prize_card .prize_image img {
+    max-width: 80%;
+    max-height: 80%;
+  }
+
+  /* Keep 2nd prize image smaller */
+  #event_2026_dance #prizes .prize_card.second .prize_image img {
+    max-width: 70%;
+    max-height: 70%;
+  }
+
+  /* 2nd prize image bottom align on mobile */
+  #event_2026_dance #prizes .prize_card.second .prize_image {
+    padding-bottom: 0;
+    align-items: flex-end;
   }
   
   /* Reduce Prize Badge height on Mobile - Restoring to safer value */
   #event_2026_dance #prizes .prize_badge {
-    min-height: 25%; /* Increased from 20% */
-    flex-basis: 25%;
+    min-height: 30%; /* Increased from 20% */
+    flex-basis: 30%;
   }
 
   /* Reduce Rules initial height on Mobile */
   #event_2026_dance #rules .rules_content {
-    max-height: 400px; /* Reduced from 1080px */
+    max-height: 800px;
+    font-size: 4.35vw; /* 47px / 1080px */
   }
   
   #event_2026_dance #rules .rules_content::after {
@@ -1443,5 +1722,109 @@ body.show #sec3, body.show #sec4, body.show #sec5 {
 
   .prize_nav_next {
     right: 0.25rem;
+  }
+  #event_2026_dance #rules .rules_title {
+    font-size: 7.4vw;
+  }
+
+  #event_2026_dance #rules .rules_ordered_list > li {
+    padding-left: 4vw;
+  }
+  
+  #event_2026_dance #rules .rules_sublist li {
+    padding-left: 4vw;
+  }
+  
+}
+
+  /* ========== 1440px - 1920px Adjustment ========== */                                                                                                                                         
+@media (min-width: 1440px) {                                                                                                                                                                   
+  #event_2026_dance #hero .hero_subtitle {                                                                                                                                                     
+    margin-top: calc(17.71vw - 100px);                                                                                                                                                         
+  }                                                                                                                                                                                            
+}  
+
+  /* ========== Large Screen Adjustments ========== */
+  /* Prevent characters from moving too far out on very wide screens (>= 1920px) */
+@media (min-width: 1920px) {
+  #event_2026_dance #hero .char_left {
+    /* Fixed position calculation: Center - (1920px * 0.05 left + 1920px * 0.23 width) + alignment adjustment */
+    /* Original left: 5% -> 96px at 1920px width */
+    /* Distance from center = 960px - 96px = 864px */
+    left: calc(50% - 864px); 
+    width: 470px; /* Fixed width at 1920px * 23% */
+  }
+  
+  #event_2026_dance #hero .char_right {
+    /* Fixed position calculation: Center - (1920px * 0.06 right + 1920px * 0.19 width) + alignment adjustment */
+    /* Original right: 6% -> 115.2px at 1920px width */
+    /* Distance from center = 960px - 115.2px = 844.8px -> 845px */
+    right: calc(50% - 845px);
+    width: 370px; /* Fixed width at 1920px * 19% */
+  }
+
+  #event_2026_dance #hero .hero_cta {
+    gap: 52px;
+  }
+
+  #event_2026_dance #hero .hero_cta .btn {
+    width: 430px;
+    height: 105px;
+    max-width: 430px;
+    flex: 0 0 auto;
+  }
+
+  #event_2026_dance #steps .step_btn {
+    width: 525px;
+    height: 105px;
+    max-width: 525px;
+    flex: 0 0 auto;
+  }
+
+  #event_2026_dance #steps .steps_grid {
+    grid-template-columns: 1fr 450px 450px 450px 1fr;
+    column-gap: 105px;
+  }
+
+  #event_2026_dance #steps .step_main {
+    height: 485px;
+  }
+
+  #event_2026_dance #steps .step_image {
+    height: 240px;
+  }
+
+  /* Fix arrows position for 1920px+ */
+  #event_2026_dance #steps .step1_main::after,
+  #event_2026_dance #steps .step2_main::after {
+    left: calc(100% + 52.5px);
+  }
+
+  #event_2026_dance #hero .hero_subtitle {
+    margin-top: calc(38vw - 590px);
+    transform: translateY(2.5vw);
+  }
+
+  #event_2026_dance #hero::before {
+    background: url('../images/section1-3.svg') no-repeat center -100px;
+  }
+
+  #event_2026_dance #hero {
+    padding: 8rem 2rem 0;
+    min-height: 41.67vw;
+  }
+}
+
+@media (max-width: 767px) {
+  #event_2026_dance #steps::before {
+    height: 9vw;
+  }
+
+  #event_2026_dance #steps .steps_grid::before {
+    height: 81%;
+  }
+
+  #event_2026_dance #rules .rules_content {
+    max-height: 500px; /* Increased from 400px to show more text */
   }
 }

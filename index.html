@@ -6,12 +6,12 @@
     <meta content="width=device-width,initial-scale=1" name="viewport" />
     <link rel="icon" type="image/x-icon" href="static/cathay/favicon.ico" />
     <link rel="shortcut icon" href="static/cathay/favicon.ico" />
-    <title id="HtmlTitle">簡單點！國泰產險Online｜2026 會員召集舞夠有禮</title>
+    <title id="HtmlTitle">會員專屬 | 快來挑戰『簡單點』洗腦舞，萬元大獎等你拿！</title>
     <meta name="description" content="2026 會員召集舞夠有禮！學舞、註冊、分享，就有機會獲得 Switch 2, Dyson 等大獎！" />
     <meta name="keywords" content="國泰產險,會員召集,舞蹈挑戰,抽獎" />
     <meta name="og:image" content="images/share_2026.png" />
     <meta name="og:description" content="2026 會員召集舞夠有禮！學舞、註冊、分享，就有機會獲得 Switch 2, Dyson 等大獎！" />
-    <meta name="og:title" content="簡單點！國泰產險Online｜2026 會員召集舞夠有禮" />
+    <meta name="og:title" content="會員專屬 | 快來挑戰『簡單點』洗腦舞，萬元大獎等你拿！" />
     <meta name="og:type" content="article" />
     <meta name="og:url" />
     <meta name="og:site_name" content="國泰產險" />
@@ -699,10 +699,10 @@
               <div class="hero_content">
                 <div class="hero_title">
                   <div class="line1">
-                    <span class="yellow">\ 線上投保 /</span><span class="black">選國泰產險</span>
+                    <span class="yellow"><span class="slash">\</span> 線上投保 <span class="slash">/</span></span><span class="black">選國泰產險</span>
                   </div>
                   <div class="line2">
-                    <span class="black">會員召集</span><span class="yellow">舞夠有禮</span>
+                    <span class="black">『簡單點』<span class="dance-text">洗腦舞</span></span><span class="yellow">募集抽獎</span>
                   </div>
                 </div>
                 
@@ -715,8 +715,10 @@
               </div>
               
               <!-- Characters -->
-              <img src="images/cellphoneman.svg" alt="左側人物" class="char_left" />
-              <img src="images/musicwoman.png" alt="右側人物" class="char_right" />
+              <div class="hero_chars">
+                <img src="images/cellphoneman.svg" alt="左側人物" class="char_left" />
+                <img src="images/musicwoman.png" alt="右側人物" class="char_right" />
+              </div>
             </section>
             
             <!-- Steps Section -->
@@ -737,7 +739,7 @@
                 </div>
                 <div class="step_footer step1_footer">
                   <a href="javascript:void(0)" class="step_btn js-video-modal-btn">簡單點舞蹈教學 <span class="arrow"></span></a>
-                  <p class="step_note">※觀看學習後<br>請開啟您的手機相機錄下舞蹈影片</p>
+                  <p class="step_note">※請點擊畫面右側按鈕<br>開啟相機錄下你的洗腦歌舞影片</p>
                 </div>
                 
                 <!-- Step 2 -->
@@ -774,33 +776,26 @@
                 <div class="incentive_banner">
                   <div class="icon"></div>
                   <div>
-                    <h3>&nbsp;新會員加碼！本次活動期間加入國泰產險</h3>
-                    <h3>新會員註冊資料填入活動碼「easy_tap」</h3>
-                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;就有機會獲得100點LINE POINTS！</h3>
+                    <h3><span class="ib-line-1">新會員加碼！本次活動期間加入國泰產險</span></h3>
+                    <h3><span class="ib-line-2">新會員註冊資料填入活動碼「EASY2026」</span></h3>
+                    <h3><span class="ib-line-3">就有機會獲得100點LINE POINTS！</span></h3>
                   </div>
                 </div>
-
-                <!-- Floating Camera Button - Moved to end of steps_grid to be sibling but still needs global positioning or different parent strategy -->
-                <!-- Current structure: #steps > .steps_grid > .floating_camera_btn_container -->
-                <!-- Problem: sticky is constrained by .floating_camera_btn_container height which is 100% of .steps_grid -->
-                <!-- To scroll past video to footer, the container needs to be outside #steps or cover multiple sections -->
-                
-                <!-- Moving floating button out of #steps to #event_2026_dance main container -->
               </div>
             </section>
             
             <!-- Floating Camera Button Wrapper that spans from after steps to end -->
             <div class="global_floating_camera_container">
                <button type="button" class="floating_camera_btn" id="floatingCameraBtn" aria-label="開啟相機錄影">
-                 <!-- Image hidden via CSS, used as background now -->
-                 <span class="btn_text">馬上開啟相機<br>錄製舞蹈影片</span>
+                 <span class="btn_text desktop_text"><span class="text_lg">馬上掃QRCode</span><br>錄下你的洗腦舞影片</span>
+                 <span class="btn_text mobile_text">跟著音樂一起跳<br>錄下你的<br>洗腦舞影片</span>
                </button>
                <input type="file" id="danceVideoInput" accept="video/*" capture="environment" style="display: none;">
             </div>
 
             <!-- Video Section -->
             <section id="video">
-              <h2 class="video_title"><span>簡單點！</span> 國泰產險Online MV</h2>
+              <h2 class="video_title"><span>🎵線上投保 選國泰產險</span><br><span class="dance-name">『簡單點』</span>洗腦舞完整版MV</h2>
               <div class="video_container">
                 <div class="video-cover" style="background-image: url('images/sec2_slide1.png'); cursor: pointer;">
                   <div class="play-btn"></div>
@@ -814,48 +809,93 @@
             
             <!-- Prizes Section -->
             <section id="prizes">
-              <h2 class="prizes_title">至國泰產險FB指定貼文留言</h2>
-              <p class="prizes_subtitle">秀出你的 <span class="green"> \ 簡單點舞蹈影片 / </span>就有機會獲得</p>
+              <h2 class="prizes_title">至國泰產險<br class="mobile_br">FB指定貼文留言</h2>
+              <p class="prizes_subtitle">秀出你的<br class="mobile_br"><span class="green"> \ 簡單點舞蹈影片 / </span><br class="mobile_br">就有機會獲得</p>
               
-              <div class="prizes_grid">
-                <!-- 2nd Prize -->
-                <div class="prize_card second">
-                  <div class="prize_badge">
-                    <span class="badge_rank">2獎</span>
-                    <span class="badge_count">共2名</span>
-                  </div>
-                  <div class="prize_card_body">
-                    <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
-                    <div class="prize_image">
-                      <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
+              <div class="prizes_grid swiper-container">
+                <div class="swiper-wrapper">
+                  <!-- 1st Prize -->
+                  <div class="prize_card first swiper-slide">
+                    <div class="prize_badge">
+                      <span class="badge_rank">頭獎</span>
+                      <span class="badge_count">共1名</span>
+                    </div>
+                    <div class="prize_card_body">
+                      <h4 class="prize_title">Nintendo Switch 2</h4>
+                      <div class="prize_image">
+                        <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <!-- 1st Prize -->
-                <div class="prize_card first">
-                  <div class="prize_badge">
-                    <span class="badge_rank">頭獎</span>
-                    <span class="badge_count">共1名</span>
-                  </div>
-                  <div class="prize_card_body">
-                    <h4 class="prize_title">Nintendo Switch 2</h4>
-                    <div class="prize_image">
-                      <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
+
+                  <!-- 2nd Prize -->
+                  <div class="prize_card second swiper-slide">
+                    <div class="prize_badge">
+                      <span class="badge_rank">2獎</span>
+                      <span class="badge_count">共2名</span>
+                    </div>
+                    <div class="prize_card_body">
+                      <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
+                      <div class="prize_image">
+                        <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <!-- 3rd Prize -->
-                <div class="prize_card third">
-                  <div class="prize_badge">
-                    <span class="badge_rank">3獎</span>
-                    <span class="badge_count">共5名</span>
+                  
+                  <!-- 3rd Prize -->
+                  <div class="prize_card third swiper-slide">
+                    <div class="prize_badge">
+                      <span class="badge_rank">3獎</span>
+                      <span class="badge_count">共5名</span>
+                    </div>
+                    <div class="prize_card_body">
+                      <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
+                      <div class="prize_image">
+                        <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
+                      </div>
+                    </div>
                   </div>
-                  <div class="prize_card_body">
-                    <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
-                    <div class="prize_image">
-                      <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
+
+                  <!-- Duplicated Slides for Better Loop -->
+                  <!-- 1st Prize (Copy) -->
+                  <div class="prize_card first swiper-slide">
+                    <div class="prize_badge">
+                      <span class="badge_rank">頭獎</span>
+                      <span class="badge_count">共1名</span>
+                    </div>
+                    <div class="prize_card_body">
+                      <h4 class="prize_title">Nintendo Switch 2</h4>
+                      <div class="prize_image">
+                        <img src="images/nintendo.svg" alt="Nintendo Switch 2" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2nd Prize (Copy) -->
+                  <div class="prize_card second swiper-slide">
+                    <div class="prize_badge">
+                      <span class="badge_rank">2獎</span>
+                      <span class="badge_count">共2名</span>
+                    </div>
+                    <div class="prize_card_body">
+                      <h4 class="prize_title">Dyson Supersonic™<br>HD15 吹風機</h4>
+                      <div class="prize_image">
+                        <img src="images/dyson.svg" alt="Dyson Supersonic™ HD15 吹風機" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- 3rd Prize (Copy) -->
+                  <div class="prize_card third swiper-slide">
+                    <div class="prize_badge">
+                      <span class="badge_rank">3獎</span>
+                      <span class="badge_count">共5名</span>
+                    </div>
+                    <div class="prize_card_body">
+                      <h4 class="prize_title">Marshall Minor IV<br>真無線藍芽耳機 第四代</h4>
+                      <div class="prize_image">
+                        <img src="images/marshall.svg" alt="Marshall Minor IV 真無線藍芽耳機" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -887,11 +927,9 @@
                         <li>
                           本活動限國泰產險線上會員(以下簡稱會員)參加，會員須於活動期間內(2026/03/18 - 04/12) 透過本活動頁面或國泰產險Facebook粉絲團之指定抽獎活動貼文連結，依指示完成以下指定步驟，即可獲得抽獎資格：
                           <ul class="rules_sublist">
-                            <li>Step 1：點擊活動濾鏡連結</li>
-                            <li>Step 2：使用活動濾鏡，錄下指定官方舞蹈動作</li>
-                            <li>Step 3：下載影片存至手機</li>
-                            <li>Step 4：登入會員中心，複製專屬活動碼</li>
-                            <li>Step 5：至指定抽獎活動貼文留言分享影片，並附上會員專屬活動碼</li>
+                            <li>Step 1：觀看官方教學影片學習指定舞蹈段落，拍攝並上傳你的「簡單點」舞蹈影片（會員本人須入鏡）。拍攝時可使用官方提供之音樂鏡頭功能，或自行播放音樂以個人手機之內建相機進行錄影；服裝造型不設限制。</li>
+                            <li>Step 2：註冊/登入會員。登入會員後系統將自動導入會員中心頁面，找到專屬活動碼並複製它。</li>
+                            <li>Step 3：至指定抽獎活動貼文留言分享影片，並附上會員專屬活動碼。</li>
                           </ul>
                         </li>
                         <li>
@@ -950,7 +988,6 @@
                     } else {
                       rulesToggleImg.src = 'images/arrowdown.svg';
                       rulesToggleImg.alt = '展開全部注意事項';
-                      // Scroll back to rules title if needed
                       document.querySelector('.rules_title').scrollIntoView({behavior: 'smooth'});
                     }
                   });
