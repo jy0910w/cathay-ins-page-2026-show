@@ -1103,10 +1103,11 @@ body {
   width: 20vw;
   height: auto;
   aspect-ratio: 1 / 1.4;
-  background: url('../images/buttom2.svg') no-repeat center center;
+  background: url('../images/button_qrcode.png') no-repeat center center;
   background-size: contain;
   border: none;
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
   padding: 0;
   transition: transform 0.3s ease;
   font-family: inherit;
@@ -1123,7 +1124,7 @@ body {
 .floating_camera_btn .btn_text.desktop_text {
   display: block;
   position: absolute;
-  top: 14%; 
+  top: 13%; 
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -1595,6 +1596,7 @@ body {
     border: none;
     border-radius: 0;
     cursor: pointer;
+    pointer-events: auto;
     width: 28.6vw;
     height: auto;
     aspect-ratio: 1;
