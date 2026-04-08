@@ -1100,7 +1100,7 @@ body {
 }
 
 .floating_camera_btn {
-  width: 20vw;
+  width: 15vw;
   height: auto;
   aspect-ratio: 1 / 1.4;
   background: url('../images/button_qrcode.png') no-repeat center center;
@@ -1132,11 +1132,11 @@ body {
   color: white;
   font-weight: 700;
   line-height: 1.2;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
 }
 
 .floating_camera_btn .btn_text.desktop_text .text_lg {
-  font-size: 1.875vw;
+  font-size: 1.375vw;
   display: block;
   color: white;
 }
