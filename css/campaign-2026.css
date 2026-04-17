@@ -648,6 +648,11 @@ body {
   #event_2026_dance #prizes .prizes_grid .swiper-slide:nth-child(n+4) {
     display: none;
   }
+
+  /* Reduce font size for 2nd prize title to prevent wrapping on desktop */
+  #event_2026_dance #prizes .prize_card.second .prize_title {
+    font-size: clamp(0.85rem, 1.3vw, 1.6rem) !important;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1919px) {
