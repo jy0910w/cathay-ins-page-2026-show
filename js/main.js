@@ -165,33 +165,39 @@
 document.addEventListener('DOMContentLoaded', function() {
   var cameraBtn = document.getElementById('floatingCameraBtn');
   var cameraContainer = document.querySelector('.global_floating_camera_container');
-  var videoSection = document.getElementById('video');
+  var incentiveBanner = document.querySelector('.incentive_banner');
+  var step1Footer = document.querySelector('.step1_footer');
   
-  if(cameraBtn && cameraContainer && videoSection) {
+  if(cameraBtn && cameraContainer && incentiveBanner && step1Footer) {
     var isAndroid = /Android/.test(navigator.userAgent);
     var isLine = /Line/.test(navigator.userAgent);
 
-    // Scroll Monitor
-    window.addEventListener('scroll', function() {
-      // Logic: Show button when Video Section top reaches viewport (or desired trigger point)
-      // Requirement: "滑動到出現section vedio時 這個按鈕才出現"
-      
+    var updateFloatingCameraVisibility = function() {
       // Hide on Android Line
       if (isAndroid && isLine) {
         cameraContainer.classList.remove('visible');
         return;
       }
 
-      var videoRect = videoSection.getBoundingClientRect();
-      var triggerPoint = window.innerHeight * 0.8; // Trigger when video section is near bottom of viewport
-      
-      // If video section top is higher than trigger point (meaning it's entering view or passed)
-      if (videoRect.top < triggerPoint) {
+      var isMobile = window.innerWidth < 1024;
+      var triggerElement = isMobile ? step1Footer : incentiveBanner;
+      var triggerRect = triggerElement.getBoundingClientRect();
+      var shouldShow = isMobile
+        ? triggerRect.bottom <= window.innerHeight
+        : triggerRect.top <= window.innerHeight * 0.9;
+
+      // Mobile: show when step1 footer bottom reaches viewport bottom.
+      // Desktop: show when incentive banner top reaches 90% from viewport top.
+      if (shouldShow) {
         cameraContainer.classList.add('visible');
       } else {
         cameraContainer.classList.remove('visible');
       }
-    });
+    };
+
+    window.addEventListener('scroll', updateFloatingCameraVisibility);
+    window.addEventListener('resize', updateFloatingCameraVisibility);
+    updateFloatingCameraVisibility();
 
     cameraBtn.addEventListener('click', function() {
       // Mobile: Open URL
