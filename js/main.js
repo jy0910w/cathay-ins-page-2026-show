@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Desktop: Do nothing (handled by CSS pointer-events: none, but JS check added for safety)
       var isMobile = window.innerWidth < 1024;
       if (isMobile) {
-          window.open('https://recorddemo.pages.dev/', '_blank');
+          window.open('https://recorddemo.webarfilter.com', '_blank');
       }
     });
   }
