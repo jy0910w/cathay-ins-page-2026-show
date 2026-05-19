@@ -1,4 +1,4 @@
-﻿var SMBtnClose = $('[data-close-btn-systemmessage]');
+var SMBtnClose = $('[data-close-btn-systemmessage]');
 var CMBtnClose = $('.btn.btn-outline-reverse.close');
 SMBtnClose.on('click', function () {
     coockieChange("SMFirstTimeFlag");

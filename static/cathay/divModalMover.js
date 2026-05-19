@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {
     $('#mainform').append($('.modal'));
 })
 

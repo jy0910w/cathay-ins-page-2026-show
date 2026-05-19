@@ -1,4 +1,4 @@
-﻿$().ready(function () {
+$().ready(function () {
     var width = $(window).width();
     if (width <= 960) {
         var navbarChildren = $('.navbar-right').children();
