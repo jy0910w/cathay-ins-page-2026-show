@@ -71,25 +71,26 @@
     });
   }
 
-  // Campaign Video Player Logic (Custom Cover)
+  // Campaign Video Player Logic (Custom Cover with YouTube)
   const videoCover = document.querySelector('.video-cover');
   const campaignVideo = document.getElementById('campaign-video');
 
   if (videoCover && campaignVideo) {
     videoCover.addEventListener('click', function() {
       this.classList.add('hide');
-      campaignVideo.play().catch(error => {
-        console.log("Autoplay prevented:", error);
-        // If autoplay is blocked (rare on user interaction), we might need to show controls immediately
-      });
+      // Show iframe and start playing
+      campaignVideo.style.display = 'block';
+      
+      // Get current src and add autoplay if not present
+      let src = campaignVideo.src;
+      if (src.indexOf('autoplay=1') === -1) {
+        const separator = src.includes('?') ? '&' : '?';
+        campaignVideo.src = src + separator + 'autoplay=1';
+      }
     });
-
-    campaignVideo.addEventListener('ended', function() {
-      videoCover.classList.remove('hide');
-      // Reset video
-      campaignVideo.currentTime = 0;
-      // Also on mobile, exiting full screen might happen, ensure inline plays
-    });
+    
+    // Optional: Reset cover when clicking outside (if needed in future)
+    // Note: YouTube iframe doesn't fire 'ended' event easily without API setup
   }
 
   // Mobile Prizes Navigation with Swiper
