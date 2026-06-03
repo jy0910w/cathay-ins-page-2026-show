@@ -70,28 +70,6 @@
     });
   }
 
-  // Campaign Video Player Logic (Custom Cover with YouTube)
-  const videoCover = document.querySelector('.video-cover');
-  const campaignVideo = document.getElementById('campaign-video');
-
-  if (videoCover && campaignVideo) {
-    videoCover.addEventListener('click', function() {
-      this.classList.add('hide');
-      // Show iframe and start playing
-      campaignVideo.style.display = 'block';
-      
-      // Get current src and add autoplay if not present
-      let src = campaignVideo.src;
-      if (src.indexOf('autoplay=1') === -1) {
-        const separator = src.includes('?') ? '&' : '?';
-        campaignVideo.src = src + separator + 'autoplay=1';
-      }
-    });
-    
-    // Optional: Reset cover when clicking outside (if needed in future)
-    // Note: YouTube iframe doesn't fire 'ended' event easily without API setup
-  }
-
   // Mobile Prizes Navigation with Swiper
   const prizesSection = document.getElementById('prizes');
   
