@@ -52,13 +52,12 @@
     const closeModal = () => {
       modal.classList.remove('active');
       document.body.style.overflow = '';
-      // Use postMessage to stop video instead of reloading iframe
-      if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage(JSON.stringify({
-          'event': 'command',
-          'func': 'stopVideo',
-          'args': ''
-        }), '*');
+      if (iframe) {
+        const currentSrc = iframe.src;
+        iframe.src = '';
+        setTimeout(() => {
+          iframe.src = videoSrc;
+        }, 50);
       }
     };
 
